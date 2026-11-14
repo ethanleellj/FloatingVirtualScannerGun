@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Default locale: English. Fallback for any language not covered below. -->
+<resources>
+    <string name="app_name">Floating Virtual Scanner Gun</string>
+
+    <!-- Overlay panel -->
+    <string name="panel_title">Floating Scanner</string>
+    <string name="btn_collapse">Hide</string>
+    <string name="btn_test">Test</string>
+    <string name="btn_exit">Exit</string>
+    <string name="status_idle">Point at a barcode</string>
+    <string name="status_camera_failed">Camera failed to start: %1$s</string>
+    <string name="status_detected">Scanned: %1$s\nSending…</string>
+    <string name="image_pick_unavailable">No image picker on this device</string>
+    <string name="image_open_failed">Cannot open that image</string>
+    <string name="image_no_code_of_type">That image has a code, but not the selected type</string>
+    <string name="image_no_code">No code found in that image</string>
+    <string name="status_image_found">Image: %1$s</string>
+    <string name="status_image_batch">Image: %1$d codes</string>
+    <string name="status_all_mode">Page mode · %1$d code(s) in view, tap \"Scan page\"</string>
+    <string name="status_batch_capturing">Taking the photo…</string>
+    <string name="status_batch_capture_failed">Photo failed: %1$s</string>
+    <string name="status_batch_empty_photo">empty photo</string>
+    <string name="status_batch_no_camera">Camera is not ready for a photo</string>
+    <string name="status_batch_none">No code in that photo</string>
+    <string name="status_batch_none_of_type">That photo has codes, but not the selected type</string>
+    <string name="status_batch_found">Found %1$d code(s), typing them in…</string>
+    <string name="status_batch_progress">%1$d/%2$d: %3$s</string>
+    <string name="status_batch_done">Page done: %1$d/%2$d sent</string>
+    <string name="status_batch_over_limit">Found %1$d codes, only the first %2$d are sent</string>
+    <string name="status_sent">%1$s\n%2$s</string>
+    <string name="status_send_failed">%1$s\n%2$s</string>
+    <string name="brief_truncated">…(%1$d chars)</string>
+
+    <!-- Notification -->
+    <string name="notification_channel">Scan service</string>
+    <string name="notification_title">Floating scanner is running</string>
+    <string name="notification_text">Tap the floating ball to scan</string>
+    <string name="notification_stop">Stop</string>
+
+    <!-- Main screen -->
+    <string name="main_subtitle">Overlay scan → accessibility / Shizuku injection into the target app</string>
+    <string name="label_overlay_perm">Overlay permission: %1$s</string>
+    <string name="label_camera_perm">Camera permission: %1$s</string>
+    <string name="label_a11y">Accessibility service: %1$s</string>
+    <string name="label_shizuku">Shizuku: %1$s</string>
+    <string name="state_granted">granted</string>
+    <string name="state_denied">not granted</string>
+    <string name="state_checking">checking…</string>
+    <string name="state_on">on</string>
+    <string name="state_off">off</string>
+    <string name="state_ok">sent</string>
+    <string name="state_failed">failed</string>
+    <string name="a11y_state_connected">on, connected</string>
+    <string name="a11y_state_enabled">on, waiting for connection</string>
+    <string name="btn_grant_overlay">Grant overlay permission</string>
+    <string name="btn_grant_camera">Grant camera permission</string>
+    <string name="btn_grant_a11y">Open accessibility settings</string>
+    <string name="a11y_hint">The entry to enable is “Floating scanner injection”: Settings → Accessibility → Downloaded apps (on some models: Downloaded services). That one is enough — leave the others alone.</string>
+    <string name="btn_request_auth">Request authorization</string>
+    <string name="btn_self_test">Injection self-test</string>
+    <string name="btn_start_overlay">Start overlay</string>
+    <string name="btn_stop_overlay">Stop overlay</string>
+
+    <!-- Profiles -->
+    <string name="section_profile">Profile</string>
+    <string name="profile_hint">A profile bundles prefix/suffix, Enter, injection channel and dialog policy. Switch profiles instead of editing each field.</string>
+    <string name="btn_profiles">Profile: %1$s</string>
+    <string name="profile_title">Profiles</string>
+    <string name="profile_list_hint">Tap to activate · long-press to rename, duplicate or delete</string>
+    <string name="profile_new">New profile</string>
+    <string name="profile_default">Default</string>
+    <string name="profile_summary">prefix %1$s · suffix %2$s · Enter %3$s · %4$s</string>
+    <string name="profile_rename">Rename</string>
+    <string name="profile_copy">Duplicate</string>
+    <string name="profile_delete">Delete</string>
+    <string name="profile_cannot_delete">At least one profile must remain</string>
+    <string name="profile_switched">Switched to %1$s</string>
+    <string name="profile_name_hint">Profile name</string>
+    <string name="profile_prefix_hint">Prefix, e.g. PDA-</string>
+    <string name="profile_suffix_hint">Suffix, e.g. \\r or -END</string>
+
+    <!-- Injection channel -->
+    <string name="section_channel">Injection channel</string>
+    <string name="channel_hint">Auto tries accessibility first when an input field is focused, and falls back to Shizuku for apps that only accept key events.</string>
+    <string name="channel_auto">Auto</string>
+    <string name="channel_a11y">Accessibility</string>
+    <string name="channel_shizuku">Shizuku shell</string>
+    <string name="channel_clipboard">Clipboard only</string>
+    <string name="channel_none">not sent</string>
+
+    <!-- Modal policy -->
+    <string name="section_modal">When a dialog blocks input</string>
+    <string name="modal_hint">Keys sent into a dialog are swallowed, so a blocked send is reported rather than silently dropped.</string>
+
+    <string name="section_multi_code">Multiple barcodes in view</string>
+    <string name="multi_code_first">First detected</string>
+    <string name="multi_code_second">Second detected</string>
+    <string name="multi_code_third">Third detected</string>
+    <string name="multi_code_fourth">Fourth detected</string>
+    <string name="multi_code_last">Last detected</string>
+    <string name="multi_code_largest">Largest (closest)</string>
+    <string name="multi_code_center">Nearest to center</string>
+    <string name="multi_code_skip">Skip the frame</string>
+    <string name="multi_code_all">Whole page (photo)</string>
+    <string name="multi_code_all_toast">Page mode on: live frames no longer type anything. Tap \"Scan page\" on the floating panel to photograph the page; every code on it is typed in reading order.</string>
+    <string name="multi_code_hint">Which code to use when one frame holds several. The default takes the first one the decoder returns. \"Whole page (photo)\" is a mode, not a pick: it stops live typing and types a whole page from one photo instead.</string>
+    <string name="code_type_hint">Which codes are accepted. 2D covers QR Code, Data Matrix, Aztec and PDF417. Takes effect immediately for both the camera and image picking.</string>
+    <string name="code_type_matrix">2D codes only (QR)</string>
+    <string name="code_type_linear">1D barcodes only</string>
+    <string name="code_type_all">All</string>
+    <string name="section_code_type">Codes to accept</string>
+    <string name="modal_block">Report and skip</string>
+    <string name="modal_auto_close">Dismiss it, then send</string>
+    <string name="modal_wait">Wait for it to close</string>
+
+    <!-- Prefix / suffix -->
+    <string name="section_scan_config">Scan settings (scanner prefix / suffix)</string>
+    <string name="hint_prefix">Prefix, e.g. PDA- (optional)</string>
+    <string name="hint_suffix">Suffix, e.g. \\r or -END (optional)</string>
+    <string name="cb_enter">Send Enter after each scan (default scanner behavior)</string>
+    <string name="cb_append">Append at the cursor (otherwise overwrite)</string>
+    <string name="cb_ignore_dup">Ignore consecutive duplicate barcodes</string>
+    <string name="cb_beep">Beep when a scan is sent</string>
+    <string name="escape_hint">Escapes: \\n newline · \\t Tab · \\xNN hex byte</string>
+    <string name="payload_preview">Sends: %1$s</string>
+
+    <!-- Tools -->
+    <string name="section_tools">Library</string>
+    <string name="btn_snippets">Snippets</string>
+    <string name="btn_snippet_short">Saved</string>
+    <string name="btn_gallery">Scan image</string>
+    <string name="btn_batch">Scan page</string>
+    <string name="btn_history">History</string>
+
+    <!-- Snippets -->
+    <string name="snippet_title">Snippets</string>
+    <string name="snippet_hint">Stored text you can send with one tap from the floating panel. Tap a row to copy it.</string>
+    <string name="snippet_new">New snippet</string>
+    <string name="snippet_edit">Edit</string>
+    <string name="snippet_copy">Copy</string>
+    <string name="snippet_delete">Delete</string>
+    <string name="snippet_copied">Copied to clipboard</string>
+    <string name="snippet_empty">No snippets yet — add one in the main screen under Library</string>
+    <string name="snippet_send_failed">Could not show the list: %1$s</string>
+    <string name="snippet_name_hint">Name</string>
+    <string name="snippet_text_hint">Text to send</string>
+
+    <!-- History -->
+    <string name="history_title">Scan history</string>
+    <string name="history_search_hint">Search content</string>
+    <string name="history_count">%1$d of max %2$d records</string>
+    <string name="history_meta">%1$s · %2$s · %3$s</string>
+    <string name="history_copied">Copied to clipboard</string>
+    <string name="history_delete">Delete</string>
+    <string name="history_clear">Clear all</string>
+    <string name="history_clear_confirm">Delete every stored scan? This cannot be undone.</string>
+
+    <!-- Manual send -->
+    <string name="section_manual">Manual send (inject without scanning, for troubleshooting)</string>
+    <string name="hint_manual">Text to send (for testing)</string>
+    <string name="section_test_text">Content sent by the self-test button (main screen + overlay "Test")</string>
+    <string name="hint_test_text">Default TEST123; empty falls back to the default</string>
+    <string name="btn_manual_send">Send</string>
+    <string name="btn_manual_send_enter">Send + Enter</string>
+    <string name="result_sending">Sending: %1$s</string>
+    <string name="result_line">%1$s %2$s\nContent: %3$s</string>
+
+    <!-- Exit confirmation -->
+    <string name="exit_title">Exit floating scanner?</string>
+    <string name="exit_message">The floating ball, the scan service and the notification will all be removed.</string>
+    <string name="toast_exited">Floating scanner exited</string>
+
+    <!-- Toasts -->
+    <string name="toast_shizuku_not_running">Shizuku is not running. Start Shizuku first.</string>
+    <string name="toast_auth_requested">Authorization requested. Allow it in the Shizuku dialog.</string>
+    <string name="toast_camera_granted">Camera permission already granted</string>
+    <string name="toast_need_overlay">Grant the overlay permission first</string>
+    <string name="toast_need_camera">Grant the camera permission first</string>
+    <string name="toast_overlay_started">Overlay started. Tap the ball to scan, long-press it to exit.</string>
+    <string name="toast_stop_requested">Stop requested</string>
+    <string name="toast_need_content">Enter the text to send</string>
+
+    <!-- Injection channels -->
+    <string name="inject_ok">Success</string>
+    <string name="inject_failed">Failed</string>
+    <string name="inject_via_a11y">typed into the focused field</string>
+    <string name="inject_via_shizuku">key events sent</string>
+    <string name="inject_via_shizuku_no_a11y">text may be mangled — accessibility is off</string>
+    <string name="inject_copied">Copied to clipboard — long-press the field to paste</string>
+    <string name="inject_err_no_binder">Shizuku is not connected</string>
+    <string name="inject_err_no_permission">Shizuku permission not granted</string>
+    <string name="inject_err_exit_code">exit code %1$d</string>
+    <string name="inject_err_exception">%1$s: %2$s</string>
+    <string name="inject_chars">%1$d chars</string>
+    <string name="inject_err_modal">Blocked by a dialog: %1$s</string>
+    <string name="inject_err_password">The focused field is a password field — refusing to inject</string>
+    <string name="inject_err_a11y_off">Accessibility “Floating scanner injection” is off</string>
+    <string name="inject_err_no_input">No editable field in the current screen</string>
+    <string name="inject_err_enter_unsupported">This Android version cannot send Enter through accessibility</string>
+    <string name="inject_warn_no_enter">Text was typed, but Enter could not be sent</string>
+    <string name="inject_err_set_failed">Could not write into the field</string>
+    <string name="inject_err_no_channel">No injection channel available</string>
+
+    <!-- Accessibility service descriptor -->
+    <string name="a11y_service_label">Floating scanner injection</string>
+    <string name="a11y_service_desc">Reads the focused input field and types the scanned barcode into it. Used only for the app in the foreground; nothing is collected or uploaded.</string>
+    <string name="a11y_service_summary">Types scanned barcodes into the focused field</string>
+
+    <!-- Shizuku status -->
+    <string name="shizuku_status_disconnected">not connected (start the Shizuku service first)</string>
+    <string name="shizuku_status_unauthorized">connected, not authorized</string>
+    <string name="shizuku_status_ready_uid">ready (shell uid=%1$d)</string>
+    <string name="shizuku_status_ready">ready</string>
+
+    <!-- Camera selection -->
+    <string name="section_camera">Camera</string>
+    <string name="camera_front">Front camera</string>
+    <string name="camera_back">Back camera</string>
+    <string name="camera_external">External camera</string>
+    <string name="camera_label_index">%1$s %2$d</string>
+    <string name="camera_label">%1$s · %2$s</string>
+    <string name="camera_detail_focal">%1$.1fmm · ID %2$s</string>
+    <string name="camera_detail_id">ID %1$s</string>
+    <string name="camera_hint">Pick which lens to scan with. If the phone has several back cameras, they are listed separately.</string>
+    <string name="camera_switched">Switched to %1$s</string>
+    <string name="btn_switch_cam">Lens</string>
+    <string name="camera_none">No camera detected</string>
+    <string name="camera_restarted">Camera switched, overlay restarted</string>
+    <string name="camera_single">Only one camera available</string>
+
+    <!-- Language -->
+    <string name="section_language">Language</string>
+    <string name="btn_language">Language: %1$s</string>
+    <string name="lang_system">Follow system</string>
+    <string name="lang_zh_hans">简体中文</string>
+    <string name="lang_zh_hant">繁體中文</string>
+    <string name="lang_en">English</string>
+
+    <!-- About -->
+    <string name="btn_about">About</string>
+    <string name="about_title">About</string>
+    <string name="about_tagline">Turns the phone into a scanner gun: the floating window reads a barcode and types it into whatever app has focus, as real key events.</string>
+    <string name="about_version">Version %1$s (build %2$d) · target API %3$d · minSdk %4$d</string>
+    <string name="about_build_time">Built %1$s</string>
+    <string name="about_author_title">AUTHOR</string>
+    <string name="about_author_name">Li Liujian (李柳剑)</string>
+    <string name="about_email">ethanleellj@live.com</string>
+    <string name="about_email_hint">Tap the address to send an email</string>
+    <string name="about_mail_subject">Feedback on the floating scanner gun</string>
+    <string name="about_email_no_app_title">No email app found</string>
+    <string name="about_email_no_app">The address has been copied to the clipboard:\n%1$s</string>
+    <string name="about_readme_entry">Project README</string>
+    <string name="about_readme_hint">Full feature notes and the reasoning behind each design decision, readable offline</string>
+    <string name="readme_title">Project README</string>
+    <string name="readme_load_failed">Failed to load the README. It is bundled inside the app, so this should not happen; reinstalling usually fixes it.</string>
+    <string name="about_copyright">© 2026 李柳剑 · free of ads, analytics and trackers</string>
+
+    <!-- Profile bundle import / export -->
+    <string name="profile_bundle_hint">Export to a JSON file and import it on other phones: profiles + snippets (scan history is never included)</string>
+    <string name="profile_import">Import</string>
+    <string name="profile_export">Export</string>
+    <string name="bundle_exported">Exported</string>
+    <string name="bundle_imported">Imported — %1$d new, %2$d updated, %3$d snippet(s)</string>
+    <string name="bundle_err_empty">The file is empty</string>
+    <string name="bundle_err_not_json">That file is not valid JSON</string>
+    <string name="bundle_err_no_profiles">The file has no profiles in it</string>
+    <string name="bundle_err_wrong_file">That is not a config file exported by this app</string>
+    <string name="bundle_err_io">Read/write failed: %1$s</string>
+    <string name="bundle_err_no_picker">No file picker on this device</string>
+
+    <!-- V2: phone as PC scanner -->
+    <string name="section_net">Network forwarding (phone as a PC scanner gun)</string>
+    <string name="hint_net_host">PC address, e.g. 192.168.1.20</string>
+    <string name="label_net_port">Port</string>
+    <string name="net_hint">With the channel set to \"Network forwarding\", every scanned code is sent as one text line to that address. Run tools/pc_receiver/receiver.py on the PC to receive it.</string>
+    <string name="channel_net">Network forwarding</string>
+    <string name="channel_hid">Bluetooth keyboard</string>
+    <string name="inject_via_net">sent to the PC</string>
+    <string name="inject_err_net">could not reach the PC</string>
+    <string name="inject_err_net_unset">PC address / port is not set</string>
+
+    <!-- V2: Bluetooth HID keyboard -->
+    <string name="section_hid">Bluetooth keyboard (pair the PC once, nothing to install there)</string>
+    <string name="hint_hid_mac">PC Bluetooth address, e.g. C8:5B:76:1A:2B:3C</string>
+    <string name="btn_hid_pick">Paired PC…</string>
+    <string name="hid_pick_title">Paired devices</string>
+    <string name="hid_pick_empty">No paired devices yet.\n\nPair the PC in the system Bluetooth settings first, then come back here — the phone can only type into a PC it is already paired with.</string>
+    <string name="hid_hint">With the channel set to \"Bluetooth keyboard\", the phone registers itself as a HID keyboard and types each code on the PC. This only works with printable US-layout ASCII: if the payload contains anything else (Chinese, full-width punctuation), the whole send is refused instead of typing half of it.</string>
+    <string name="inject_via_hid">typed on the PC over Bluetooth</string>
+    <string name="inject_err_hid">Bluetooth send failed</string>
+    <string name="inject_err_hid_api">Bluetooth HID needs Android 9 or newer</string>
+    <string name="inject_err_hid_off">Bluetooth is turned off</string>
+    <string name="inject_err_hid_unset">No target PC selected</string>
+    <string name="inject_err_hid_perm">Bluetooth connect permission not granted</string>
+    <string name="inject_err_hid_charset">A Bluetooth keyboard cannot type this (ASCII only): %1$s</string>
+    <string name="hid_pick_unnamed">Unnamed device</string>
+
+    <!-- ==================== 使用说明页 ==================== -->
+    <string name="btn_help">Help</string>
+    <string name="help_title">How to use</string>
+    <string name="help_lead">Three steps get you scanning. The rest covers the panel buttons, batch capture and troubleshooting.</string>
+    <string name="help_s1_title">① Permissions (once)</string>
+    <string name="help_s1_body">The top of the main screen lists four permissions. Tap each button and grant:\n\n• Overlay — lets the panel float above other apps\n• Camera — barcode capture\n• Accessibility — writes the result into the target app\'s field (recommended). In system settings it is listed as “Floating scanner injection”: Settings → Accessibility → Downloaded apps, enable that entry\n• Shizuku — optional; for systems that only accept key events (e.g. Sixun self-service POS)\n\nA row turns green once it is ready. Scanning still works without the last two, but the text then lands in the clipboard and has to be pasted by hand.</string>
+    <string name="help_s2_title">② Start the overlay, put the cursor in place</string>
+    <string name="help_s2_body">Tap \"Start overlay\": a floating ball appears at the screen edge and a persistent notification shows up (the camera is running, Android requires it).\n\nSwitch to the app you want to type into — POS screen, notes, Excel — and tap the field to fill.\n\nThis is the step people skip: text always goes to whatever has focus. No cursor in a field, nowhere for the keys to land.</string>
+    <string name="help_s3_title">③ Open the panel, aim at the barcode</string>
+    <string name="help_s3_body">Tap the floating ball to expand the panel and put the barcode inside the preview. The status line walks through \"Aim at a barcode\" → \"Detected: …\" → \"OK · accessibility (32 ms)\".\n\nOnce you hear the beep and see OK, move on to the next item.\n\nBall gestures: tap to expand · drag to move · long-press 600 ms to exit.</string>
+    <string name="help_s4_title">Buttons on the panel</string>
+    <string name="help_s4_body">• Image — pick a photo and decode the codes in it; no storage permission, works with screenshots and codes received in chat\n• Scan page — photograph a whole sheet and type every code on it (next section)\n• Test — sends the text from the main screen\'s self-test field through the full chain; first thing to try when debugging\n• Snippets — your saved snippets, tap to send\n• Lens — cycles through the available cameras\n• Exit — stops the service after a confirmation\n\nThe title bar can be dragged; tap Collapse to return to the ball.</string>
+    <string name="help_s5_title">Why one scan types once</string>
+    <string name="help_s5_body">A code must be identical across 3 consecutive frames before it is typed, and it is locked out right after until it leaves the frame.\n\nSo a label held still under the lens types exactly once. To scan it again, move it out of the frame for at least 1.2 s first.\n\nTwo different items in quick succession are both captured: a different code is accepted once 1.2 s have passed.</string>
+    <string name="help_s6_title">Whole page: dozens of codes on one sheet</string>
+    <string name="help_s6_body">1. On the main screen set Multiple codes in frame to Scan all (whole page). The live preview then stops typing altogether and only frames the shot\n2. Open the receiving app, put the cursor in the field, start the overlay\n3. Expand the panel and tap Scan page to photograph the sheet\n\nThe status line runs Taking photo… → N codes found, typing… → 3/12: xxx → Done: 12/12.\n\nReading order is top to bottom, left to right within a row; duplicates are typed once; 100 codes per page at most. Gallery photos work too: pick this mode, then tap Image.\n\nFill the frame with the sheet, keep the phone parallel to the paper and avoid glare. For dense sheets, shoot with the system camera and use Image — it is sharper than the small preview.</string>
+    <string name="help_s7_title">Bulk capture into notes or Excel</string>
+    <string name="help_s7_body">Leave prefix and suffix empty, turn auto-Enter on, and put the cursor in the body text.\n\nEach scan writes one line and presses Enter, so the cursor moves down by itself. A few dozen serial numbers take minutes, and the result pastes into a spreadsheet one row per line.\n\nWhole-page and gallery batches append to the field; a single scan replaces it — exactly what a POS product field wants.</string>
+    <string name="help_s8_title">Profiles you can carry around</string>
+    <string name="help_s8_body">A profile bundles prefix / suffix / auto-Enter / injection channel / dialog policy. Switch profiles in one tap when you change workstation or target system.\n\nThe profiles screen can export them to a JSON file and import it on another phone, snippets included. Export goes through the system picker: no storage permission, nothing uploaded.</string>
+    <string name="help_s9_title">Nothing happens? Check in this order</string>
+    <string name="help_s9_body">1. Tap Test on the panel. OK means the channel works and the problem is focus — go back and tap the field\n2. The result says blocked by a dialog: the target app popped one and the keys went into it. Use the dialog policy on the main screen\n3. The result says copied plus a reason: the original channel failed and the reason follows (Bluetooth not connected, connection timed out, requires Android 9 or newer…)\n4. Still nothing: check whether Injection channel is pinned to one option — a profile can lock a single channel\n5. Text comes out mangled or full-width: accessibility was unbound by the system. Re-enable it, or use the Shizuku channel</string>
+    <string name="help_s10_title">Permissions, and why</string>
+    <string name="help_s10_body">Camera — scans the barcode. Only while the floating window is open; frames are decoded on the device and never uploaded or stored (a page-scan photo is decoded in memory and released right after).\n\nOverlay — keeps the scanner panel on top of the target app (POS, notes, Excel) without stealing input focus. Stealing focus would mean the keystrokes land nowhere.\n\nAccessibility (“Floating scanner injection”) — writes the scanned text into the focused field. It is optional: apps that only listen for hardware key events (old POS terminals) go through Shizuku instead.\n\nNotifications — a foreground notification is what Android requires for a camera service. It is not a push channel.\n\nBluetooth (Android 12+) — only requested when you use the Bluetooth-keyboard output. Never asked otherwise.\n\nNetwork — only used by the "Network forwarding" output, and only to the address you type in yourself.</string>
+    <string name="help_s11_title">Privacy policy</string>
+    <string name="help_s11_body">No ads, no analytics SDK, no tracking, no user profiling, no account required.\n\n• Scanned codes, snippets and profiles stay on this phone (SharedPreferences / SQLite) and are deleted with the app.\n• Camera frames are decoded on the device by ML Kit. No image or video ever leaves the phone.\n• The only network traffic is the address you configure under "Network forwarding"; data goes there and nowhere else, and you can switch it off at any time.\n• No device identifiers, location, contacts or any other personal data are collected.</string>
+    <string name="help_s12_title">Open-source components</string>
+    <string name="help_s12_body">CameraX (preview and still capture), ML Kit Barcode Scanning (on-device decoding), Shizuku (optional shell injection), AndroidX. Each component is used under its own open-source licence.</string>
+    <string name="help_footer">Full details on network forwarding, the Bluetooth keyboard and the trade-offs behind each design decision are in the project README — see About → Project README.</string>
+</resources>

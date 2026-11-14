@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  声明本应用支持的语言，Android 13+ 会在
+  设置 → 应用 → 悬浮虚拟扫描枪 → 语言 中提供单独切换入口。
+-->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en" />
+    <locale android:name="zh-Hans" />
+    <locale android:name="zh-Hant" />
+</locale-config>

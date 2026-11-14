@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 繁體中文（台灣／香港／澳門通用，使用 BCP 47 的 zh-Hant 語言標籤） -->
+<resources>
+    <string name="app_name">懸浮虛擬掃描槍</string>
+
+    <!-- 懸浮窗 -->
+    <string name="panel_title">懸浮掃描槍</string>
+    <string name="btn_collapse">收合</string>
+    <string name="btn_test">自檢</string>
+    <string name="btn_exit">退出</string>
+    <string name="status_idle">對準條碼</string>
+    <string name="status_camera_failed">相機啟動失敗：%1$s</string>
+    <string name="status_detected">辨識到：%1$s\n傳送中…</string>
+    <string name="image_pick_unavailable">系統裡沒有可用的圖片選擇器</string>
+    <string name="image_open_failed">這張圖片打不開</string>
+    <string name="image_no_code_of_type">圖片裡有碼，但不符合目前碼制設定</string>
+    <string name="image_no_code">這張圖片裡沒有辨識到條碼</string>
+    <string name="status_image_found">圖片：%1$s</string>
+    <string name="status_image_batch">圖片：%1$d 個條碼</string>
+    <string name="status_all_mode">整頁模式 · 畫面 %1$d 個碼，點「整頁掃描」</string>
+    <string name="status_batch_capturing">拍照中…</string>
+    <string name="status_batch_capture_failed">拍照失敗：%1$s</string>
+    <string name="status_batch_empty_photo">照片為空</string>
+    <string name="status_batch_no_camera">相機未就緒，無法拍照</string>
+    <string name="status_batch_none">照片裡沒找到條碼</string>
+    <string name="status_batch_none_of_type">照片裡有碼，但不是所選類型</string>
+    <string name="status_batch_found">辨識到 %1$d 個條碼，開始錄入…</string>
+    <string name="status_batch_progress">%1$d/%2$d：%3$s</string>
+    <string name="status_batch_done">整頁錄入完成：%1$d/%2$d</string>
+    <string name="status_batch_over_limit">辨識到 %1$d 個條碼，只錄入前 %2$d 個</string>
+    <string name="status_sent">%1$s\n%2$s</string>
+    <string name="status_send_failed">%1$s\n%2$s</string>
+    <string name="brief_truncated">…(%1$d 字元)</string>
+
+    <!-- 通知 -->
+    <string name="notification_channel">掃碼服務</string>
+    <string name="notification_title">懸浮掃描槍執行中</string>
+    <string name="notification_text">點擊懸浮球開始掃碼</string>
+    <string name="notification_stop">停止</string>
+
+    <!-- 主畫面 -->
+    <string name="main_subtitle">懸浮窗掃碼 → 無障礙 / Shizuku 注入到目標 App</string>
+    <string name="label_overlay_perm">懸浮窗權限：%1$s</string>
+    <string name="label_camera_perm">相機權限：%1$s</string>
+    <string name="label_a11y">無障礙服務：%1$s</string>
+    <string name="label_shizuku">Shizuku：%1$s</string>
+    <string name="state_granted">已授予</string>
+    <string name="state_denied">未授予</string>
+    <string name="state_checking">偵測中</string>
+    <string name="state_on">開</string>
+    <string name="state_off">關</string>
+    <string name="state_ok">成功</string>
+    <string name="state_failed">失敗</string>
+    <string name="a11y_state_connected">已開啟，已連線</string>
+    <string name="a11y_state_enabled">已開啟，等待連線</string>
+    <string name="btn_grant_overlay">授予懸浮窗權限</string>
+    <string name="btn_grant_camera">授予相機權限</string>
+    <string name="btn_grant_a11y">開啟無障礙設定</string>
+    <string name="a11y_hint">系統設定裡要開的是「懸浮掃描槍注入」這一項：設定 → 無障礙 → 已下載的應用（部分機型叫「已下載的服務」）。只開這一項就行，其它服務不用動。</string>
+    <string name="btn_request_auth">請求授權</string>
+    <string name="btn_self_test">注入自我測試</string>
+    <string name="btn_start_overlay">啟動懸浮窗</string>
+    <string name="btn_stop_overlay">停止懸浮窗</string>
+
+    <!-- 設定檔 -->
+    <string name="section_profile">設定檔</string>
+    <string name="profile_hint">一套設定檔包含前後綴、Enter、注入通道與彈窗策略。換目標 App 時整體切換，不必逐項修改。</string>
+    <string name="btn_profiles">設定檔：%1$s</string>
+    <string name="profile_title">設定檔</string>
+    <string name="profile_list_hint">點按即啟用 · 長按可重新命名、複製或刪除</string>
+    <string name="profile_new">新增設定檔</string>
+    <string name="profile_default">預設</string>
+    <string name="profile_summary">前綴 %1$s · 後綴 %2$s · Enter %3$s · %4$s</string>
+    <string name="profile_rename">重新命名</string>
+    <string name="profile_copy">複製一份</string>
+    <string name="profile_delete">刪除</string>
+    <string name="profile_cannot_delete">至少要保留一個設定檔</string>
+    <string name="profile_switched">已切換到 %1$s</string>
+    <string name="profile_name_hint">設定檔名稱</string>
+    <string name="profile_prefix_hint">前綴，例如 PDA-</string>
+    <string name="profile_suffix_hint">後綴，例如 \\r 或 -END</string>
+
+    <!-- 注入通道 -->
+    <string name="section_channel">注入通道</string>
+    <string name="channel_hint">自動模式：目前畫面有輸入框時先走無障礙，只收按鍵事件的 App（如收銀 POS）自動改走 Shizuku。</string>
+    <string name="channel_auto">自動</string>
+    <string name="channel_a11y">無障礙</string>
+    <string name="channel_shizuku">Shizuku shell</string>
+    <string name="channel_clipboard">僅剪貼簿</string>
+    <string name="channel_none">未傳送</string>
+
+    <!-- 彈窗策略 -->
+    <string name="section_modal">被彈窗擋住時</string>
+    <string name="modal_hint">送進對話框的按鍵會被吞掉，因此這裡寧可攔下並提示，也不靜默傳送。</string>
+
+    <string name="section_multi_code">畫面裡有多個條碼</string>
+    <string name="multi_code_first">只取第一個</string>
+    <string name="multi_code_second">只取第二個</string>
+    <string name="multi_code_third">只取第三個</string>
+    <string name="multi_code_fourth">只取第四個</string>
+    <string name="multi_code_last">只取最後一個</string>
+    <string name="multi_code_largest">面積最大（最近）</string>
+    <string name="multi_code_center">最靠畫面中心</string>
+    <string name="multi_code_skip">多碼時不掃</string>
+    <string name="multi_code_all">全部掃描（拍照整頁）</string>
+    <string name="multi_code_all_toast">已切到整頁模式：畫面裡的碼不再逐個錄入。點懸浮面板上的「整頁掃描」拍一張，APP 會按閱讀順序把整頁的碼一次錄進去。</string>
+    <string name="multi_code_hint">一幀裡出現多個條碼時採信哪一個。預設只取辨識器回傳的第一個。「全部掃描（拍照整頁）」是模式而不是口徑：選中後即時畫面不再錄入，改由一張照片把整頁的碼按順序一次錄進去。</string>
+    <string name="code_type_hint">採信哪一類碼。二維碼包含 QR Code、Data Matrix、Aztec、PDF417。改完對鏡頭掃碼和圖庫辨識立即生效。</string>
+    <string name="code_type_matrix">只認二維碼（含 QR）</string>
+    <string name="code_type_linear">只認一維條碼</string>
+    <string name="code_type_all">全部</string>
+    <string name="section_code_type">辨識的碼制</string>
+    <string name="modal_block">攔截並提示</string>
+    <string name="modal_auto_close">先關掉彈窗再送</string>
+    <string name="modal_wait">等待彈窗消失</string>
+
+    <!-- 前後綴 -->
+    <string name="section_scan_config">掃碼設定（模擬掃描槍的前後綴）</string>
+    <string name="hint_prefix">前綴，例如 PDA-（可留空）</string>
+    <string name="hint_suffix">後綴，例如 \\r 或 -END（可留空）</string>
+    <string name="cb_enter">掃碼後自動送出行（掃描槍預設行為）</string>
+    <string name="cb_append">追加到游標處（否則覆蓋原內容）</string>
+    <string name="cb_ignore_dup">忽略連續重複的條碼</string>
+    <string name="cb_beep">掃到後播放提示音</string>
+    <string name="escape_hint">支援轉義：\\n 換行 · \\t 定位字元 · \\xNN 十六進位位元組</string>
+    <string name="payload_preview">最終傳送：%1$s</string>
+
+    <!-- 工具 -->
+    <string name="section_tools">設定庫</string>
+    <string name="btn_snippets">常用指令</string>
+    <string name="btn_snippet_short">指令</string>
+    <string name="btn_gallery">圖片辨識</string>
+    <string name="btn_batch">整頁掃描</string>
+    <string name="btn_history">掃碼歷史</string>
+
+    <!-- 常用指令 -->
+    <string name="snippet_title">常用指令</string>
+    <string name="snippet_hint">存好的文字，可在懸浮面板上一鍵傳送。點按項目即複製。</string>
+    <string name="snippet_new">新增指令</string>
+    <string name="snippet_edit">編輯</string>
+    <string name="snippet_copy">複製</string>
+    <string name="snippet_delete">刪除</string>
+    <string name="snippet_copied">已複製到剪貼簿</string>
+    <string name="snippet_empty">尚無常用指令，可在主畫面「設定庫」中新增</string>
+    <string name="snippet_send_failed">無法顯示清單：%1$s</string>
+    <string name="snippet_name_hint">名稱</string>
+    <string name="snippet_text_hint">要傳送的文字</string>
+
+    <!-- 掃碼歷史 -->
+    <string name="history_title">掃碼歷史</string>
+    <string name="history_search_hint">搜尋內容</string>
+    <string name="history_count">共 %1$d 筆（上限 %2$d）</string>
+    <string name="history_meta">%1$s · %2$s · %3$s</string>
+    <string name="history_copied">已複製到剪貼簿</string>
+    <string name="history_delete">刪除</string>
+    <string name="history_clear">清空全部</string>
+    <string name="history_clear_confirm">刪除全部已儲存的掃碼紀錄？此操作無法復原。</string>
+
+    <!-- 手動傳送 -->
+    <string name="section_manual">手動傳送（不掃碼直接注入，排障用）</string>
+    <string name="hint_manual">手動輸入內容（測試用）</string>
+    <string name="section_test_text">自檢按鈕傳送的內容（主介面「注入自我測試」與面板「自檢」共用）</string>
+    <string name="hint_test_text">預設 TEST123；留空則用預設值</string>
+    <string name="btn_manual_send">傳送</string>
+    <string name="btn_manual_send_enter">傳送 + Enter</string>
+    <string name="result_sending">傳送中：%1$s</string>
+    <string name="result_line">%1$s %2$s\n內容：%3$s</string>
+
+    <!-- 退出確認 -->
+    <string name="exit_title">退出懸浮掃描槍？</string>
+    <string name="exit_message">懸浮球、掃碼服務與通知都會一併關閉。</string>
+    <string name="toast_exited">懸浮掃描槍已退出</string>
+
+    <!-- 提示 -->
+    <string name="toast_shizuku_not_running">Shizuku 服務未執行，請先啟動 Shizuku</string>
+    <string name="toast_auth_requested">已發起授權請求，請在 Shizuku 視窗中允許</string>
+    <string name="toast_camera_granted">相機權限已授予</string>
+    <string name="toast_need_overlay">請先授予懸浮窗權限</string>
+    <string name="toast_need_camera">請先授予相機權限</string>
+    <string name="toast_overlay_started">懸浮窗已啟動，點擊懸浮球掃碼，長按可退出</string>
+    <string name="toast_stop_requested">已請求停止</string>
+    <string name="toast_need_content">請輸入要傳送的內容</string>
+
+    <!-- 注入通道 -->
+    <string name="inject_ok">成功</string>
+    <string name="inject_failed">失敗</string>
+    <string name="inject_via_a11y">已寫入焦點輸入框</string>
+    <string name="inject_via_shizuku">已送出按鍵事件</string>
+    <string name="inject_via_shizuku_no_a11y">內容可能被輸入法改寫：無障礙已斷開</string>
+    <string name="inject_copied">已複製到剪貼簿，請長按輸入框貼上</string>
+    <string name="inject_err_no_binder">Shizuku 未連線</string>
+    <string name="inject_err_no_permission">未取得 Shizuku 授權</string>
+    <string name="inject_err_exit_code">結束碼 %1$d</string>
+    <string name="inject_err_exception">%1$s: %2$s</string>
+    <string name="inject_chars">%1$d 字元</string>
+    <string name="inject_err_modal">被彈窗攔截：%1$s</string>
+    <string name="inject_err_password">焦點是密碼欄位，已拒絕注入</string>
+    <string name="inject_err_a11y_off">無障礙「懸浮掃描槍注入」未開啟</string>
+    <string name="inject_err_no_input">目前畫面沒有可編輯的輸入框</string>
+    <string name="inject_err_enter_unsupported">目前系統版本無法透過無障礙送出 Enter</string>
+    <string name="inject_warn_no_enter">內容已寫入，但 Enter 未能送出</string>
+    <string name="inject_err_set_failed">輸入框寫入失敗</string>
+    <string name="inject_err_no_channel">沒有可用的注入通道</string>
+
+    <!-- 無障礙服務說明 -->
+    <string name="a11y_service_label">懸浮掃描槍注入</string>
+    <string name="a11y_service_desc">讀取目前焦點輸入框，把掃碼結果輸入進去。僅作用於前景應用程式，不蒐集、不上傳任何內容。</string>
+    <string name="a11y_service_summary">把掃碼結果輸入到目前輸入框</string>
+
+    <!-- Shizuku 狀態 -->
+    <string name="shizuku_status_disconnected">未連線（請先啟動 Shizuku 服務）</string>
+    <string name="shizuku_status_unauthorized">已連線，未授權</string>
+    <string name="shizuku_status_ready_uid">就緒（shell uid=%1$d）</string>
+    <string name="shizuku_status_ready">就緒</string>
+
+    <!-- 鏡頭選擇 -->
+    <string name="section_camera">鏡頭</string>
+    <string name="camera_front">前置鏡頭</string>
+    <string name="camera_back">後置鏡頭</string>
+    <string name="camera_external">外接鏡頭</string>
+    <string name="camera_label_index">%1$s %2$d</string>
+    <string name="camera_label">%1$s · %2$s</string>
+    <string name="camera_detail_focal">%1$.1fmm · ID %2$s</string>
+    <string name="camera_detail_id">ID %1$s</string>
+    <string name="camera_hint">選擇用哪顆鏡頭掃碼。手機有多個後置鏡頭時會分別列出，焦距可協助區分主鏡、超廣角與長焦。</string>
+    <string name="camera_switched">已切換到 %1$s</string>
+    <string name="btn_switch_cam">鏡頭</string>
+    <string name="camera_none">未偵測到鏡頭</string>
+    <string name="camera_restarted">鏡頭已切換，懸浮窗已重新啟動</string>
+    <string name="camera_single">只有一個鏡頭</string>
+
+    <!-- 語言 -->
+    <string name="section_language">語言</string>
+    <string name="btn_language">語言：%1$s</string>
+    <string name="lang_system">跟隨系統</string>
+    <string name="lang_zh_hans">简体中文</string>
+    <string name="lang_zh_hant">繁體中文</string>
+    <string name="lang_en">English</string>
+
+    <!-- 關於 -->
+    <string name="btn_about">關於</string>
+    <string name="about_title">關於</string>
+    <string name="about_tagline">把手機變成掃描槍：懸浮窗掃到條碼後，用真實按鍵事件把它打進目前取得焦點的 App，不需要改對方系統。</string>
+    <string name="about_version">版本 %1$s（build %2$d）· 目標 API %3$d · 最低 API %4$d</string>
+    <string name="about_build_time">編譯時間 %1$s</string>
+    <string name="about_author_title">作者</string>
+    <string name="about_author_name">李柳劍</string>
+    <string name="about_email">ethanleellj@live.com</string>
+    <string name="about_email_hint">點郵箱地址即可寄信</string>
+    <string name="about_mail_subject">懸浮掃描槍使用回饋</string>
+    <string name="about_email_no_app_title">沒有可用的郵件應用</string>
+    <string name="about_email_no_app">位址已複製到剪貼簿：\n%1$s</string>
+    <string name="about_readme_entry">專案說明（README）</string>
+    <string name="about_readme_hint">完整的功能說明、實作取捨都在裡面，離線可看</string>
+    <string name="readme_title">專案說明</string>
+    <string name="readme_load_failed">README 載入失敗。這份檔案打包在應用裡，正常不會出現這個問題；重新安裝應用一般就能解決。</string>
+    <string name="about_copyright">© 2026 李柳劍 · 無廣告、無統計、無追蹤</string>
+
+    <!-- 設定檔匯入匯出 -->
+    <string name="profile_bundle_hint">匯出成一個 JSON 檔，拷到別的手機匯入即可：設定檔 + 常用指令（不含掃碼歷史）</string>
+    <string name="profile_import">匯入</string>
+    <string name="profile_export">匯出</string>
+    <string name="bundle_exported">已匯出</string>
+    <string name="bundle_imported">匯入完成：新增 %1$d 個、更新 %2$d 個、常用指令 %3$d 條</string>
+    <string name="bundle_err_empty">檔案是空的</string>
+    <string name="bundle_err_not_json">這不是一個合法的 JSON 檔</string>
+    <string name="bundle_err_no_profiles">檔案裡沒有設定檔</string>
+    <string name="bundle_err_wrong_file">這不是本 App 匯出的設定檔</string>
+    <string name="bundle_err_io">讀寫失敗：%1$s</string>
+    <string name="bundle_err_no_picker">這台裝置沒有檔案選擇器</string>
+
+    <!-- V2：手機當 PC 掃描槍 -->
+    <string name="section_net">網路轉發（手機當 PC 掃描槍）</string>
+    <string name="hint_net_host">電腦 IP，例如 192.168.1.20</string>
+    <string name="label_net_port">連接埠</string>
+    <string name="net_hint">注入通道選「網路轉發」後，每條掃描內容會作為一行文字送到該位址。電腦上執行 tools/pc_receiver/receiver.py 即可接收。</string>
+    <string name="channel_net">網路轉發</string>
+    <string name="channel_hid">藍牙鍵盤</string>
+    <string name="inject_via_net">已送到電腦</string>
+    <string name="inject_err_net">連線電腦失敗</string>
+    <string name="inject_err_net_unset">還沒有填電腦位址 / 連接埠</string>
+
+    <!-- V2：藍牙鍵盤 -->
+    <string name="section_hid">藍牙鍵盤（和電腦配一次對，電腦端不用裝任何程式）</string>
+    <string name="hint_hid_mac">電腦藍牙位址，例如 C8:5B:76:1A:2B:3C</string>
+    <string name="btn_hid_pick">選擇已配對的電腦…</string>
+    <string name="hid_pick_title">已配對的裝置</string>
+    <string name="hid_pick_empty">還沒有已配對的裝置。\n\n請先到系統藍牙設定裡和電腦配對，再回到這裡——手機只能往「已經配過對」的電腦上打字。</string>
+    <string name="hid_hint">注入通道選「藍牙鍵盤」後，手機會把自己註冊成一把 HID 鍵盤，把內容直接敲進電腦。只能打美式鍵盤上有的可列印 ASCII：一旦內容裡有中文或全形標點，整條拒絕傳送，不會打出半截。</string>
+    <string name="inject_via_hid">已透過藍牙敲進電腦</string>
+    <string name="inject_err_hid">藍牙傳送失敗</string>
+    <string name="inject_err_hid_api">藍牙鍵盤需要 Android 9 以上</string>
+    <string name="inject_err_hid_off">藍牙未開啟</string>
+    <string name="inject_err_hid_unset">還沒有選目標電腦</string>
+    <string name="inject_err_hid_perm">缺少「附近的裝置」權限</string>
+    <string name="inject_err_hid_charset">這段內容藍牙鍵盤打不出來（只支援 ASCII）：%1$s</string>
+    <string name="hid_pick_unnamed">未命名裝置</string>
+
+    <!-- ==================== 使用说明页 ==================== -->
+    <string name="btn_help">說明</string>
+    <string name="help_title">使用說明</string>
+    <string name="help_lead">下面三步走通就能掃碼，其餘各節是面板按鈕、批次採集與排錯。</string>
+    <string name="help_s1_title">① 授權（只做一次）</string>
+    <string name="help_s1_body">主介面上半部是四行權限狀態，逐項點按鈕開啟：\n\n• 懸浮窗 —— 面板要浮在別的 App 上面\n• 相機 —— 用相機辨識條碼\n• 無障礙服務 —— 把辨識結果寫進目標 App 的輸入框（建議開）。系統設定裡的名字叫「懸浮掃描槍注入」，位置：設定 → 無障礙 → 已下載的應用，開啟這一項即可\n• Shizuku —— 可選。目標系統只收按鍵事件（例如思迅自助收銀）時用它\n\n狀態列由紅轉綠就表示這一項已就緒。後兩項都不開也能掃碼，只是內容會落進剪貼簿，要手動貼上。</string>
+    <string name="help_s2_title">② 啟動懸浮窗，把游標停好</string>
+    <string name="help_s2_body">點「啟動懸浮窗」，螢幕邊緣出現懸浮球，通知列出現常駐通知（相機在跑，系統要求必須顯示）。\n\n然後切到要輸入的 App —— 收銀介面、記事本、Excel 都行 —— 用手指把游標點進要填的那個輸入框。\n\n這一步最容易被忽略：內容永遠是打到「目前焦點」的位置，游標不在輸入框裡，按鍵就沒地方落。</string>
+    <string name="help_s3_title">③ 展開面板，對準條碼</string>
+    <string name="help_s3_body">點一下懸浮球，面板展開，把條碼放進取景框。狀態列會依序變成「對準條碼」→「辨識到: …」→「成功 · 無障礙 (32 ms)」。\n\n聽到提示音、看到「成功」就可以移開，接著掃下一件。\n\n懸浮球手勢：單擊展開 · 拖曳移動位置 · 長按 600 ms 退出。</string>
+    <string name="help_s4_title">面板上的按鈕</string>
+    <string name="help_s4_body">• 圖片辨識 —— 從相簿選一張圖，辨識裡面的碼；不需要儲存權限，截圖、聊天裡收到的碼都能用\n• 整頁掃描 —— 拍一張照片，把整頁的條碼一次錄完（見下一節）\n• 自檢 —— 發送主介面「自檢內容」裡那段文字，走完整鏈路，排錯第一招\n• 指令 —— 常用指令清單，選中即發\n• 鏡頭 —— 在多顆相機之間循環切換\n• 退出 —— 二次確認後停止服務\n\n面板頂端標題列可以按住拖曳，點「收起」回到懸浮球。</string>
+    <string name="help_s5_title">為什麼掃一次只進一次</string>
+    <string name="help_s5_body">同一個碼要在畫面裡連續 3 幀一致才會輸入；一旦輸入立刻上鎖，直到這個碼離開畫面。\n\n所以標籤放在取景框下不動，只會進一次。想重掃，先把標籤移開 1.2 秒以上再放回。\n\n連續劃過兩件不同的貨也不會漏——第二件的碼只要不是同一個，間隔超過 1.2 秒就正常輸入。</string>
+    <string name="help_s6_title">整頁掃描：一頁紙幾十個碼</string>
+    <string name="help_s6_body">1. 主介面「畫面裡有多個條碼」選「全部掃描（拍照整頁）」。選完會提示：即時畫面不再輸入，只當取景窗\n2. 開啟接收方 App，游標停到輸入位置，啟動懸浮窗\n3. 展開面板點「整頁掃描」，對準整頁拍照\n\n狀態列依序顯示「拍照中…」→「辨識到 N 個條碼，開始輸入…」→「3/12：xxx」→「整頁輸入完成：12/12」。\n\n順序是先上後下、同一列先左後右；同一內容只錄一次；單頁最多 100 條。相簿裡的照片也能整頁錄：模式選這一檔後點「圖片辨識」。\n\n拍的時候讓紙佔滿取景框、手機與紙面平行、避開反光；條碼很密就用系統相機拍完再走「圖片辨識」，比面板小窗清楚。</string>
+    <string name="help_s7_title">連續掃進記事本 / Excel</string>
+    <string name="help_s7_body">前綴、後綴都留空，勾上「自動換行」，然後把游標放進正文。\n\n每掃一條寫入一列並換行，游標自動落到下一列；幾十台裝置的 S/N 幾分鐘錄完，導回電腦一列一條，直接當表格用。\n\n整頁掃描、相簿批次進輸入框時是「追加」，不會沖掉上一條；單次掃碼是「取代」——收銀的商品碼框要的就是取代。</string>
+    <string name="help_s8_title">多套設定帶著走</string>
+    <string name="help_s8_body">「設定檔」把一套設定打包：前綴 / 後綴 / 自動換行 / 注入通道 / 彈窗策略。換工位、換目標系統時一鍵切換，不用重新調。\n\n設定檔頁面底部可以 [匯出] 成 JSON 檔，別的手機 [匯入] 即用，常用指令一起帶走。匯出走系統「新增檔案」，不需要儲存權限，也不上傳任何地方。</string>
+    <string name="help_s9_title">掃了沒反應？按這個順序查</string>
+    <string name="help_s9_body">1. 先點面板「自檢」。顯示「成功」表示通道是通的，問題在焦點——回到目標 App 把游標點進輸入框\n2. 結果寫「被彈窗攔截」：目標 App 彈了對話框，按鍵會落進彈窗。按主介面「被彈窗擋住時」的策略處理\n3. 結果是「已複製」加一句原因：原通道沒走通，原因就寫在那句後面（藍牙未連線、連線逾時、需要 Android 9 以上…）\n4. 怎麼點都沒反應：看「注入通道」是不是被鎖在某一檔上，設定檔裡可以鎖定單一通道\n5. 內容變形、冒出全形字元：無障礙服務被系統解綁了，重新開啟；或改用 Shizuku 通道</string>
+    <string name="help_s10_title">權限說明（申請它做什麼）</string>
+    <string name="help_s10_body">相機：掃描條碼/二維碼。只在懸浮窗開啟時使用，畫面在本機解碼，不上傳、不儲存（整頁掃描的照片只在記憶體裡解碼，用完立即釋放）。\n\n懸浮窗：把掃描面板浮在目標 App（收銀、記事本、Excel）之上，且不搶走輸入焦點——焦點一旦被搶走，鍵就不知道該打給誰了。\n\n無障礙服務（「懸浮掃描槍注入」）：把掃到的內容寫進目前輸入框。這一項可選：只收硬體按鍵事件的 App（老式收銀 POS）改走 Shizuku。\n\n通知：常駐通知是 Android 對前景相機服務的硬性要求，不是推送通道。\n\n藍牙（Android 12 以上）：只有你啟用「藍牙鍵盤輸出」時才會申請，平時不會彈出。\n\n網路：只有「網路轉發」用到，且只連你自己填寫的那台電腦。</string>
+    <string name="help_s11_title">隱私政策</string>
+    <string name="help_s11_body">無廣告、無統計 SDK、無追蹤、不做使用者輪廓，也不需要註冊帳號。\n\n• 掃描內容、常用指令、設定檔都只存在本機（SharedPreferences / SQLite），解除安裝即刪除。\n• 相機畫面由 ML Kit 在本機離線解碼，任何圖片、影片都不會離開手機。\n• 唯一的連網行為是「網路轉發」裡你主動填寫的位址；資料只發往該位址，隨時可以關閉。\n• 不收集裝置識別碼、位置、通訊錄等任何個人資料。</string>
+    <string name="help_s12_title">開源元件</string>
+    <string name="help_s12_body">CameraX（預覽與拍照）、ML Kit Barcode Scanning（離線辨識）、Shizuku（可選的 shell 注入）、AndroidX。以上元件均依各自的開源授權使用。</string>
+    <string name="help_footer">網路轉發、藍牙鍵盤的完整用法，以及每一處實作上的取捨，見「關於 → 專案說明（README）」。</string>
+</resources>

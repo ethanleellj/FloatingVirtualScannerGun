@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  README 阅读页：单页长文，一个 TextView 足够。
+  TextView 而不是 WebView：不需要联网渲染，也不会引入 WebView 的体积与
+  兼容性问题；markdown 只做轻量样式化（标题加粗放大、表格与代码等宽）。
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <TextView
+        android:id="@+id/tvReadme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="4dp"
+        android:padding="20dp"
+        android:textColor="#222222"
+        android:textSize="14sp" />
+
+</ScrollView>

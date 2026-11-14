@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 简体中文 -->
+<resources>
+    <string name="app_name">悬浮虚拟扫描枪</string>
+
+    <!-- 悬浮窗 -->
+    <string name="panel_title">悬浮扫描枪</string>
+    <string name="btn_collapse">收起</string>
+    <string name="btn_test">自检</string>
+    <string name="btn_exit">退出</string>
+    <string name="status_idle">对准条码</string>
+    <string name="status_camera_failed">相机启动失败：%1$s</string>
+    <string name="status_detected">识别到：%1$s\n发送中…</string>
+    <string name="image_pick_unavailable">系统里没有可用的图片选择器</string>
+    <string name="image_open_failed">这张图片打不开</string>
+    <string name="image_no_code_of_type">图片里有码，但不符合当前码制设置</string>
+    <string name="image_no_code">这张图片里没有识别到条码</string>
+    <string name="status_image_found">图片：%1$s</string>
+    <string name="status_image_batch">图片：%1$d 个条码</string>
+    <string name="status_all_mode">整页模式 · 画面 %1$d 个码，点「整页扫描」</string>
+    <string name="status_batch_capturing">拍照中…</string>
+    <string name="status_batch_capture_failed">拍照失败：%1$s</string>
+    <string name="status_batch_empty_photo">照片为空</string>
+    <string name="status_batch_no_camera">相机未就绪，无法拍照</string>
+    <string name="status_batch_none">照片里没找到条码</string>
+    <string name="status_batch_none_of_type">照片里有码，但不是所选类型</string>
+    <string name="status_batch_found">识别到 %1$d 个条码，开始录入…</string>
+    <string name="status_batch_progress">%1$d/%2$d：%3$s</string>
+    <string name="status_batch_done">整页录入完成：%1$d/%2$d</string>
+    <string name="status_batch_over_limit">识别到 %1$d 个条码，只录入前 %2$d 个</string>
+    <string name="status_sent">%1$s\n%2$s</string>
+    <string name="status_send_failed">%1$s\n%2$s</string>
+    <string name="brief_truncated">…(%1$d 字符)</string>
+
+    <!-- 通知 -->
+    <string name="notification_channel">扫码服务</string>
+    <string name="notification_title">悬浮扫描枪运行中</string>
+    <string name="notification_text">点击悬浮球开始扫码</string>
+    <string name="notification_stop">停止</string>
+
+    <!-- 主界面 -->
+    <string name="main_subtitle">悬浮窗扫码 → 无障碍 / Shizuku 注入到目标 App</string>
+    <string name="label_overlay_perm">悬浮窗权限：%1$s</string>
+    <string name="label_camera_perm">相机权限：%1$s</string>
+    <string name="label_a11y">无障碍服务：%1$s</string>
+    <string name="label_shizuku">Shizuku：%1$s</string>
+    <string name="state_granted">已授予</string>
+    <string name="state_denied">未授予</string>
+    <string name="state_checking">检测中</string>
+    <string name="state_on">开</string>
+    <string name="state_off">关</string>
+    <string name="state_ok">成功</string>
+    <string name="state_failed">失败</string>
+    <string name="a11y_state_connected">已开启，已连接</string>
+    <string name="a11y_state_enabled">已开启，等待连接</string>
+    <string name="btn_grant_overlay">授予悬浮窗权限</string>
+    <string name="btn_grant_camera">授予相机权限</string>
+    <string name="btn_grant_a11y">打开无障碍设置</string>
+    <string name="a11y_hint">系统设置里要开的是「悬浮扫描枪注入」这一项：设置 → 无障碍 → 已下载的应用（部分机型叫“已下载的服务”）。只开这一项就行，其它服务不用动。</string>
+    <string name="btn_request_auth">请求授权</string>
+    <string name="btn_self_test">注入自检</string>
+    <string name="btn_start_overlay">启动悬浮窗</string>
+    <string name="btn_stop_overlay">停止悬浮窗</string>
+
+    <!-- 配置档 -->
+    <string name="section_profile">配置档</string>
+    <string name="profile_hint">一套配置档包含前后缀、回车、注入通道与弹窗策略。换目标 App 时整体切换，不必逐项改。</string>
+    <string name="btn_profiles">配置档：%1$s</string>
+    <string name="profile_title">配置档</string>
+    <string name="profile_list_hint">点按即启用 · 长按可重命名、复制或删除</string>
+    <string name="profile_new">新建配置档</string>
+    <string name="profile_default">默认</string>
+    <string name="profile_summary">前缀 %1$s · 后缀 %2$s · 回车 %3$s · %4$s</string>
+    <string name="profile_rename">重命名</string>
+    <string name="profile_copy">复制一份</string>
+    <string name="profile_delete">删除</string>
+    <string name="profile_cannot_delete">至少要保留一个配置档</string>
+    <string name="profile_switched">已切换到 %1$s</string>
+    <string name="profile_name_hint">配置档名称</string>
+    <string name="profile_prefix_hint">前缀，例如 PDA-</string>
+    <string name="profile_suffix_hint">后缀，例如 \\r 或 -END</string>
+
+    <!-- 注入通道 -->
+    <string name="section_channel">注入通道</string>
+    <string name="channel_hint">自动模式：当前界面有输入框时先走无障碍，只收按键事件的 App（如收银 POS）自动改走 Shizuku。</string>
+    <string name="channel_auto">自动</string>
+    <string name="channel_a11y">无障碍</string>
+    <string name="channel_shizuku">Shizuku shell</string>
+    <string name="channel_clipboard">仅剪贴板</string>
+    <string name="channel_none">未发送</string>
+
+    <!-- 弹窗策略 -->
+    <string name="section_modal">被弹窗挡住时</string>
+    <string name="modal_hint">发进对话框的按键会被吞掉，所以这里宁可拦下并提示，也不静默发送。</string>
+
+    <string name="section_multi_code">画面里有多个条码</string>
+    <string name="multi_code_first">只取第一个</string>
+    <string name="multi_code_second">只取第二个</string>
+    <string name="multi_code_third">只取第三个</string>
+    <string name="multi_code_fourth">只取第四个</string>
+    <string name="multi_code_last">只取最后一个</string>
+    <string name="multi_code_largest">面积最大（最近）</string>
+    <string name="multi_code_center">最靠画面中心</string>
+    <string name="multi_code_skip">多码时不扫</string>
+    <string name="multi_code_all">全部扫描（拍照整页）</string>
+    <string name="multi_code_all_toast">已切到整页模式：画面里的码不再逐个录入。点悬浮面板上的「整页扫描」拍一张，APP 会按阅读顺序把整页的码一次录进去。</string>
+    <string name="multi_code_hint">一帧里出现多个条码时采信哪一个。默认只取识别器返回的第一个。「全部扫描（拍照整页）」是模式而不是口径：选中后实时画面不再录入，改由一张照片把整页的码按顺序一次录进去。</string>
+    <string name="code_type_hint">采信哪一类码。二维码包含 QR Code、Data Matrix、Aztec、PDF417。改完对镜头扫码和图库识别立即生效。</string>
+    <string name="code_type_matrix">只认二维码（含 QR）</string>
+    <string name="code_type_linear">只认一维条码</string>
+    <string name="code_type_all">全部</string>
+    <string name="section_code_type">识别的码制</string>
+    <string name="modal_block">拦截并提示</string>
+    <string name="modal_auto_close">先关掉弹窗再发</string>
+    <string name="modal_wait">等待弹窗消失</string>
+
+    <!-- 前后缀 -->
+    <string name="section_scan_config">扫码配置（模拟扫描枪的前后缀）</string>
+    <string name="hint_prefix">前缀，例如 PDA-（可为空）</string>
+    <string name="hint_suffix">后缀，例如 \\r 或 -END（可为空）</string>
+    <string name="cb_enter">扫码后自动回车（扫描枪默认行为）</string>
+    <string name="cb_append">追加到光标处（否则覆盖原内容）</string>
+    <string name="cb_ignore_dup">忽略连续重复的条码</string>
+    <string name="cb_beep">扫到后播放提示音</string>
+    <string name="escape_hint">支持转义：\\n 换行 · \\t 制表符 · \\xNN 十六进制字节</string>
+    <string name="payload_preview">最终发送：%1$s</string>
+
+    <!-- 工具 -->
+    <string name="section_tools">配置库</string>
+    <string name="btn_snippets">常用指令</string>
+    <string name="btn_snippet_short">指令</string>
+    <string name="btn_gallery">图片识别</string>
+    <string name="btn_batch">整页扫描</string>
+    <string name="btn_history">扫码历史</string>
+
+    <!-- 常用指令 -->
+    <string name="snippet_title">常用指令</string>
+    <string name="snippet_hint">存好的文本，可在悬浮面板上一键发送。点按条目即复制。</string>
+    <string name="snippet_new">新建指令</string>
+    <string name="snippet_edit">编辑</string>
+    <string name="snippet_copy">复制</string>
+    <string name="snippet_delete">删除</string>
+    <string name="snippet_copied">已复制到剪贴板</string>
+    <string name="snippet_empty">还没有常用指令，可在主界面「配置库」里添加</string>
+    <string name="snippet_send_failed">无法显示列表：%1$s</string>
+    <string name="snippet_name_hint">名称</string>
+    <string name="snippet_text_hint">要发送的文本</string>
+
+    <!-- 扫码历史 -->
+    <string name="history_title">扫码历史</string>
+    <string name="history_search_hint">搜索内容</string>
+    <string name="history_count">共 %1$d 条（上限 %2$d）</string>
+    <string name="history_meta">%1$s · %2$s · %3$s</string>
+    <string name="history_copied">已复制到剪贴板</string>
+    <string name="history_delete">删除</string>
+    <string name="history_clear">清空全部</string>
+    <string name="history_clear_confirm">删除全部已保存的扫码记录？该操作不可撤销。</string>
+
+    <!-- 手动发送 -->
+    <string name="section_manual">手动发送（不扫码直接注入，排障用）</string>
+    <string name="hint_manual">手动输入内容（测试用）</string>
+    <string name="section_test_text">自检按钮发送的内容（主界面「注入自检」与面板「自检」共用）</string>
+    <string name="hint_test_text">默认 TEST123；留空则用默认值</string>
+    <string name="btn_manual_send">发送</string>
+    <string name="btn_manual_send_enter">发送 + 回车</string>
+    <string name="result_sending">发送中：%1$s</string>
+    <string name="result_line">%1$s %2$s\n内容：%3$s</string>
+
+    <!-- 退出确认 -->
+    <string name="exit_title">退出悬浮扫描枪？</string>
+    <string name="exit_message">悬浮球、扫码服务和通知都会一并关闭。</string>
+    <string name="toast_exited">悬浮扫描枪已退出</string>
+
+    <!-- 提示 -->
+    <string name="toast_shizuku_not_running">Shizuku 服务未运行，请先启动 Shizuku</string>
+    <string name="toast_auth_requested">已发起授权请求，请在 Shizuku 弹窗中允许</string>
+    <string name="toast_camera_granted">相机权限已授予</string>
+    <string name="toast_need_overlay">请先授予悬浮窗权限</string>
+    <string name="toast_need_camera">请先授予相机权限</string>
+    <string name="toast_overlay_started">悬浮窗已启动，点击悬浮球扫码，长按可退出</string>
+    <string name="toast_stop_requested">已请求停止</string>
+    <string name="toast_need_content">请输入要发送的内容</string>
+
+    <!-- 注入通道 -->
+    <string name="inject_ok">成功</string>
+    <string name="inject_failed">失败</string>
+    <string name="inject_via_a11y">已写入焦点输入框</string>
+    <string name="inject_via_shizuku">已发送按键事件</string>
+    <string name="inject_via_shizuku_no_a11y">内容可能被输入法改写：无障碍已断开</string>
+    <string name="inject_copied">已复制到剪贴板，请长按输入框粘贴</string>
+    <string name="inject_err_no_binder">Shizuku 未连接</string>
+    <string name="inject_err_no_permission">未获得 Shizuku 授权</string>
+    <string name="inject_err_exit_code">退出码 %1$d</string>
+    <string name="inject_err_exception">%1$s: %2$s</string>
+    <string name="inject_chars">%1$d 字符</string>
+    <string name="inject_err_modal">被弹窗拦截：%1$s</string>
+    <string name="inject_err_password">焦点是密码框，已拒绝注入</string>
+    <string name="inject_err_a11y_off">无障碍「悬浮扫描枪注入」未开启</string>
+    <string name="inject_err_no_input">当前界面没有可编辑的输入框</string>
+    <string name="inject_err_enter_unsupported">当前系统版本无法通过无障碍发送回车</string>
+    <string name="inject_warn_no_enter">内容已写入，但回车未能发送</string>
+    <string name="inject_err_set_failed">输入框写入失败</string>
+    <string name="inject_err_no_channel">没有可用的注入通道</string>
+
+    <!-- 无障碍服务说明 -->
+    <string name="a11y_service_label">悬浮扫描枪注入</string>
+    <string name="a11y_service_desc">读取当前焦点输入框，把扫码结果输入进去。仅作用于前台应用，不采集、不上传任何内容。</string>
+    <string name="a11y_service_summary">把扫码结果输入到当前输入框</string>
+
+    <!-- Shizuku 状态 -->
+    <string name="shizuku_status_disconnected">未连接（请先启动 Shizuku 服务）</string>
+    <string name="shizuku_status_unauthorized">已连接，未授权</string>
+    <string name="shizuku_status_ready_uid">就绪（shell uid=%1$d）</string>
+    <string name="shizuku_status_ready">就绪</string>
+
+    <!-- 摄像头选择 -->
+    <string name="section_camera">摄像头</string>
+    <string name="camera_front">前置摄像头</string>
+    <string name="camera_back">后置摄像头</string>
+    <string name="camera_external">外接摄像头</string>
+    <string name="camera_label_index">%1$s %2$d</string>
+    <string name="camera_label">%1$s · %2$s</string>
+    <string name="camera_detail_focal">%1$.1fmm · ID %2$s</string>
+    <string name="camera_detail_id">ID %1$s</string>
+    <string name="camera_hint">选择用哪颗镜头扫码。手机有多个后置摄像头时会分别列出，焦距可帮助区分主摄、超广角与长焦。</string>
+    <string name="camera_switched">已切换到 %1$s</string>
+    <string name="btn_switch_cam">镜头</string>
+    <string name="camera_none">未检测到摄像头</string>
+    <string name="camera_restarted">摄像头已切换，悬浮窗已重启</string>
+    <string name="camera_single">只有一个摄像头</string>
+
+    <!-- 语言 -->
+    <string name="section_language">语言</string>
+    <string name="btn_language">语言：%1$s</string>
+    <string name="lang_system">跟随系统</string>
+    <string name="lang_zh_hans">简体中文</string>
+    <string name="lang_zh_hant">繁體中文</string>
+    <string name="lang_en">English</string>
+
+    <!-- 关于 -->
+    <string name="btn_about">关于</string>
+    <string name="about_title">关于</string>
+    <string name="about_tagline">把手机变成扫描枪：悬浮窗扫到条码后，用真实按键事件把它打进当前获得焦点的 App，不需要改对方系统。</string>
+    <string name="about_version">版本 %1$s（build %2$d）· 目标 API %3$d · 最低 API %4$d</string>
+    <string name="about_build_time">编译时间 %1$s</string>
+    <string name="about_author_title">作者</string>
+    <string name="about_author_name">李柳剑</string>
+    <string name="about_email">ethanleellj@live.com</string>
+    <string name="about_email_hint">点邮箱地址即可发信</string>
+    <string name="about_mail_subject">悬浮扫描枪使用反馈</string>
+    <string name="about_email_no_app_title">没有可用的邮件应用</string>
+    <string name="about_email_no_app">地址已复制到剪贴板：\n%1$s</string>
+    <string name="about_readme_entry">项目说明（README）</string>
+    <string name="about_readme_hint">完整的功能说明、实现取舍都在里面，离线可看</string>
+    <string name="readme_title">项目说明</string>
+    <string name="readme_load_failed">README 加载失败。这份文件打包在应用里，正常不会出现这个问题；重新安装应用一般就能解决。</string>
+    <string name="about_copyright">© 2026 李柳剑 · 无广告、无统计、无追踪</string>
+
+    <!-- 配置档导入导出 -->
+    <string name="profile_bundle_hint">导出成一个 JSON 文件，拷到别的手机导入即可：配置档 + 常用指令（不含扫码历史）</string>
+    <string name="profile_import">导入</string>
+    <string name="profile_export">导出</string>
+    <string name="bundle_exported">已导出</string>
+    <string name="bundle_imported">导入完成：新增 %1$d 个、更新 %2$d 个、常用指令 %3$d 条</string>
+    <string name="bundle_err_empty">文件是空的</string>
+    <string name="bundle_err_not_json">这不是一个合法的 JSON 文件</string>
+    <string name="bundle_err_no_profiles">文件里没有配置档</string>
+    <string name="bundle_err_wrong_file">这不是本 App 导出的配置文件</string>
+    <string name="bundle_err_io">读写失败：%1$s</string>
+    <string name="bundle_err_no_picker">这台设备没有文件选择器</string>
+
+    <!-- V2：手机当 PC 扫描枪 -->
+    <string name="section_net">网络转发（手机当 PC 扫描枪）</string>
+    <string name="hint_net_host">电脑 IP，例如 192.168.1.20</string>
+    <string name="label_net_port">端口</string>
+    <string name="net_hint">注入通道选「网络转发」后，每条扫描内容会作为一行文本发到该地址。电脑上运行 tools/pc_receiver/receiver.py 即可接收。</string>
+    <string name="channel_net">网络转发</string>
+    <string name="channel_hid">蓝牙键盘</string>
+    <string name="inject_via_net">已发送到电脑</string>
+    <string name="inject_err_net">连接电脑失败</string>
+    <string name="inject_err_net_unset">还没有填电脑地址 / 端口</string>
+
+    <!-- V2：蓝牙键盘 -->
+    <string name="section_hid">蓝牙键盘（和电脑配一次对，电脑侧不用装任何程序）</string>
+    <string name="hint_hid_mac">电脑蓝牙地址，例如 C8:5B:76:1A:2B:3C</string>
+    <string name="btn_hid_pick">选择已配对的电脑…</string>
+    <string name="hid_pick_title">已配对的设备</string>
+    <string name="hid_pick_empty">还没有已配对的设备。\n\n请先到系统蓝牙设置里和电脑配对，再回到这里——手机只能往「已经配过对」的电脑上打字。</string>
+    <string name="hid_hint">注入通道选「蓝牙键盘」后，手机会把自己注册成一把 HID 键盘，把内容直接敲进电脑。只能打美式键盘上有的可打印 ASCII：一旦内容里有中文或全角标点，整条拒绝发送，不会打出半截。</string>
+    <string name="inject_via_hid">已通过蓝牙敲进电脑</string>
+    <string name="inject_err_hid">蓝牙发送失败</string>
+    <string name="inject_err_hid_api">蓝牙键盘需要 Android 9 及以上</string>
+    <string name="inject_err_hid_off">蓝牙未打开</string>
+    <string name="inject_err_hid_unset">还没有选目标电脑</string>
+    <string name="inject_err_hid_perm">缺少「附近的设备」权限</string>
+    <string name="inject_err_hid_charset">这段内容蓝牙键盘打不出来（只支持 ASCII）：%1$s</string>
+    <string name="hid_pick_unnamed">未命名设备</string>
+
+    <!-- ==================== 使用说明页 ==================== -->
+    <string name="btn_help">帮助</string>
+    <string name="help_title">使用说明</string>
+    <string name="help_lead">下面三步走通就能扫码，其余各节是面板按钮、批量采集和排障。</string>
+    <string name="help_s1_title">① 授权（只做一次）</string>
+    <string name="help_s1_body">主界面上半部分是四行权限状态，逐项点按钮开启：\n\n• 悬浮窗 —— 面板要浮在别的 App 上面\n• 相机 —— 用摄像头识别条码\n• 无障碍服务 —— 把识别结果写进目标 App 的输入框（推荐开）。系统设置里的名字叫「悬浮扫描枪注入」，位置：设置 → 无障碍 → 已下载的应用，打开这一项即可\n• Shizuku —— 可选。目标系统只收按键事件（例如思迅自助收银）时用它\n\n状态行由红转绿就表示这一项已就绪。后两项都不开也能扫码，只是内容会落进剪贴板，要手动粘贴。</string>
+    <string name="help_s2_title">② 启动悬浮窗，把光标停好</string>
+    <string name="help_s2_body">点「启动悬浮窗」，屏幕边缘出现悬浮球，通知栏出现常驻通知（相机在跑，系统要求必须显示）。\n\n然后切到要录入的 App —— 收银界面、记事本、Excel 都行 —— 用手指把光标点进要填的那个输入框。\n\n这一步最容易被忽略：内容永远是打到「当前焦点」的位置，光标不在输入框里，键就没地方落。</string>
+    <string name="help_s3_title">③ 展开面板，对准条码</string>
+    <string name="help_s3_body">点一下悬浮球，面板展开，把条码放进取景框。状态行会依次变成「对准条码」→「识别到: …」→「成功 · 无障碍 (32 ms)」。\n\n听到提示音、看到「成功」就可以移开，接着扫下一件。\n\n悬浮球手势：单击展开 · 拖动移动位置 · 长按 600 ms 退出。</string>
+    <string name="help_s4_title">面板上的按钮</string>
+    <string name="help_s4_body">• 图片识别 —— 从相册选一张图，识别里面的码；不需要存储权限，截图、聊天里收到的码都能用\n• 整页扫描 —— 拍一张照片，把整页的条码一次录完（见下一节）\n• 自检 —— 发送主界面「自检内容」里那段文本，走完整链路，排障第一招\n• 指令 —— 常用指令列表，选中即发\n• 镜头 —— 在多颗摄像头之间循环切换\n• 退出 —— 二次确认后停止服务\n\n面板顶部标题栏可以按住拖动，点「收起」回到悬浮球。</string>
+    <string name="help_s5_title">为什么扫一次只进一次</string>
+    <string name="help_s5_body">同一个码要在画面里连续 3 帧一致才会录入；一旦录入立刻上锁，直到这个码离开画面。\n\n所以标签放在取景框下不动，只会进一次。想重扫，先把标签移开 1.2 秒以上再放回。\n\n连着划过两件不同的货也不会漏——第二件的码只要不是同一个，间隔超过 1.2 秒就正常录入。</string>
+    <string name="help_s6_title">整页扫描：一页纸几十个码</string>
+    <string name="help_s6_body">1. 主界面「画面里有多个条码」选「全部扫描（拍照整页）」。选完会提示：实时画面不再录入，只当取景窗\n2. 打开接收方 App，光标停到输入位置，启动悬浮窗\n3. 展开面板点「整页扫描」，对准整页拍照\n\n状态行依次显示「拍照中…」→「识别到 N 个条码，开始录入…」→「3/12：xxx」→「整页录入完成：12/12」。\n\n顺序是先上后下、同一行先左后右；同一内容只录一次；单页最多 100 条。图库里的照片也能整页录：模式选这一档后点「图片识别」。\n\n拍的时候让纸占满取景框、手机与纸面平行、避开反光；条码很密就用系统相机拍完再走「图片识别」，比面板小窗清楚。</string>
+    <string name="help_s7_title">连续扫进记事本 / Excel</string>
+    <string name="help_s7_body">前缀、后缀都留空，勾上「自动回车」，然后把光标放进正文。\n\n每扫一条写入一行并换行，光标自动落到下一行；几十台设备的 S/N 几分钟录完，导回电脑一行一条，直接当表格用。\n\n整页扫描、图库批量进输入框时是「追加」，不会冲掉上一条；单次扫码是「替换」——收银的商品码框要的就是替换。</string>
+    <string name="help_s8_title">多套配置带着走</string>
+    <string name="help_s8_body">「配置档」把一套设置打包：前缀 / 后缀 / 自动回车 / 注入通道 / 弹窗策略。换工位、换目标系统时一键切换，不用重新调。\n\n配置档页底部可以 [导出] 成 JSON 文件，别的手机 [导入] 即用，常用指令一起带走。导出走系统「新建文件」，不需要存储权限，也不上传任何地方。</string>
+    <string name="help_s9_title">扫了没反应？按这个顺序查</string>
+    <string name="help_s9_body">1. 先点面板「自检」。显示「成功」说明通道是通的，问题在焦点——回到目标 App 把光标点进输入框\n2. 结果写「被弹窗拦截」：目标 App 弹了对话框，按键会落进弹窗。按主界面「被弹窗挡住时」的策略处理\n3. 结果是「已复制」加一句原因：原通道没走通，原因就写在那句后面（蓝牙未连接、连接超时、需要 Android 9 及以上…）\n4. 怎么点都没反应：看「注入通道」是不是被锁在某一档上，配置档里可以锁定单条通道\n5. 内容变形、冒出全角字符：无障碍服务被系统解绑了，重新开启；或改用 Shizuku 通道</string>
+    <string name="help_s10_title">权限说明（申请它做什么）</string>
+    <string name="help_s10_body">相机：扫描条码/二维码。只在悬浮窗打开时使用，画面在本机解码，不上传、不保存（整页扫描的照片只在内存里解码，用完立即释放）。\n\n悬浮窗：把扫描面板浮在目标 App（收银、记事本、Excel）之上，且不抢走输入焦点——焦点一旦被抢走，键就不知道该打给谁了。\n\n无障碍服务（「悬浮扫描枪注入」）：把扫到的内容写进当前输入框。这一项可选：只收硬件按键事件的 App（老式收银 POS）改走 Shizuku。\n\n通知：常驻通知是 Android 对前台相机服务的硬性要求，不是推送通道。\n\n蓝牙（Android 12 及以上）：只有你启用「蓝牙键盘输出」时才会申请，平时不会弹。\n\n网络：只有「网络转发」用到，且只连你自己填写的那台电脑。</string>
+    <string name="help_s11_title">隐私政策</string>
+    <string name="help_s11_body">无广告、无统计 SDK、无埋点、不做用户画像，也不需要注册账号。\n\n• 扫描内容、常用指令、配置档都只存在本机（SharedPreferences / SQLite），卸载即删除。\n• 相机画面由 ML Kit 在本机离线解码，任何图片、视频都不会离开手机。\n• 唯一的联网行为是「网络转发」里你主动填写的地址；数据只发往该地址，随时可以关闭。\n• 不收集设备标识、位置、通讯录等任何个人数据。</string>
+    <string name="help_s12_title">开源组件</string>
+    <string name="help_s12_body">CameraX（预览与拍照）、ML Kit Barcode Scanning（离线识别）、Shizuku（可选的 shell 注入）、AndroidX。以上组件均按各自的开源许可使用。</string>
+    <string name="help_footer">网络转发、蓝牙键盘的完整用法，以及每一处实现上的取舍，见「关于 → 项目说明（README）」。</string>
+</resources>

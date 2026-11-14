@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- V2「网络转发」：把条码发到你自己填的那台 PC。不申请任何定位/读取电话状态类权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- V2「蓝牙键盘输出」：手机当 PC 的蓝牙键盘（HID Device 角色）。
+         Android 12 起必须走运行时权限，只在启用该输出时才申请；
+         老系统用 BLUETOOTH / BLUETOOTH_ADMIN，用 maxSdkVersion 限住，免得白白多要权限 -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ProfilesActivity"
+            android:exported="false"
+            android:label="@string/profile_title" />
+
+        <activity
+            android:name=".SnippetsActivity"
+            android:exported="false"
+            android:label="@string/snippet_title" />
+
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false"
+            android:label="@string/history_title" />
+
+        <activity
+            android:name=".HelpActivity"
+            android:exported="false"
+            android:label="@string/help_title" />
+
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false"
+            android:label="@string/about_title" />
+
+        <activity
+            android:name=".ReadmeActivity"
+            android:exported="false"
+            android:label="@string/readme_title" />
+
+        <!-- 图库识别：透明壳，只负责拉起系统选择器并把结果交回悬浮服务。
+             必须给独立 taskAffinity：否则它会挂进本 App 的栈，选完图后
+             回到的是本 App（甚至栈里的某个设置页），而不是刚才那个目标 App -->
+        <activity
+            android:name=".PickImageActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:taskAffinity="com.virtualscanner.gun.imagepick"
+            android:theme="@style/PickTheme" />
+
+        <service
+            android:name=".OverlayService"
+            android:exported="false"
+            android:foregroundServiceType="camera" />
+
+        <!-- 通道 A：无障碍注入。系统通过该 action 绑定，必须有 BIND 权限保护 -->
+        <service
+            android:name=".A11y"
+            android:exported="true"
+            android:label="@string/a11y_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- 应用内语言切换：API < 33 由 AppCompat 自己持久化所选语言 -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
+
+        <!-- Shizuku 授权通道，必须声明，authorities 固定为 ${applicationId}.shizuku -->
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:enabled="true"
+            android:exported="true"
+            android:multiprocess="false" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#1E6FFF</item>
+        <item name="colorPrimaryDark">#1554C0</item>
+        <item name="colorAccent">#1E6FFF</item>
+        <item name="android:windowBackground">#F5F6F8</item>
+    </style>
+
+    <!-- 图库识别用的透明壳：只负责拉起选择器，不画任何界面，
+         这样目标 App 不会被一块白屏顶掉、用户也不会感觉"跳走了" -->
+    <style name="PickTheme" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <!-- 主界面「参数标题」：加粗深色，字号与下方设置值控件一致（16sp），
+         一眼看出哪个是参数名、哪个是解释。 -->
+    <style name="SectionTitle">
+        <item name="android:textColor">#222222</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+</resources>
