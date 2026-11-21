@@ -8,7 +8,7 @@ Turn an Android phone into a **virtual scanner gun**: a floating window reads ba
 
 **Project:** https://github.com/ethanleellj/FloatingVirtualScannerGun
 
-`Android 8.0+` · `0.1-demo` · UI available in English / 简体中文 / 繁體中文
+`Android 8.0+` · `0.2.0` · UI available in English / 简体中文 / 繁體中文
 
 ![Main screen: permissions, self-test, start the overlay](docs/images/01-main.png)
 

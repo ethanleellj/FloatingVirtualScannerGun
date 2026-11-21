@@ -8,7 +8,7 @@
 
 **项目地址：** https://github.com/ethanleellj/FloatingVirtualScannerGun
 
-`Android 8.0+` · `0.1-demo` · 界面支持简体中文 / 繁體中文 / English
+`Android 8.0+` · `0.2.0` · 界面支持简体中文 / 繁體中文 / English
 
 ![主界面：授权、自检、启动悬浮窗](docs/images/01-main.png)
 

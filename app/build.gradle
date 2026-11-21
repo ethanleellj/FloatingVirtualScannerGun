@@ -10,8 +10,8 @@ android {
         applicationId "com.virtualscanner.gun"
         minSdk 26
         targetSdk 36
-        versionCode 1
-        versionName "0.1-demo"
+        versionCode 2
+        versionName "0.2.0"
         // 编译时间戳：注入到 BuildConfig，关于页展示「编译时间」
         buildConfigField "long", "BUILD_TIME", System.currentTimeMillis() + "L"
     }
