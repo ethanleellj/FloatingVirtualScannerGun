@@ -57,6 +57,15 @@ public final class Profile {
     public int channel = CHANNEL_AUTO;
     public int modalPolicy = MODAL_BLOCK;
 
+    /**
+     * 识别并成功注入后是否自动把扫描面板折回悬浮球。
+     *
+     * <p>默认开：收银台上扫一件就收起，不挡住价格 / 合计区域。
+     * 连续录入到记事本 / Excel 时可关掉，面板一直展开不必每次重新点开。
+     * 发送失败时保持展开，让状态行上的失败原因还有机会被看到。
+     */
+    public boolean autoCollapse = true;
+
     public static Profile createDefault() {
         Profile p = new Profile();
         p.id = newId();
@@ -80,6 +89,7 @@ public final class Profile {
         p.ignoreDup = ignoreDup;
         p.channel = channel;
         p.modalPolicy = modalPolicy;
+        p.autoCollapse = autoCollapse;
         return p;
     }
 
@@ -96,6 +106,7 @@ public final class Profile {
             o.put("ignoreDup", ignoreDup);
             o.put("channel", channel);
             o.put("modal", modalPolicy);
+            o.put("autoCollapse", autoCollapse);
         } catch (JSONException ignored) {
             // 全部是基本类型，不会走到这里
         }
@@ -114,6 +125,8 @@ public final class Profile {
         p.ignoreDup = o.optBoolean("ignoreDup", true);
         p.channel = o.optInt("channel", CHANNEL_AUTO);
         p.modalPolicy = o.optInt("modal", MODAL_BLOCK);
+        // 老配置档里没有这个字段：按默认值开，与出厂行为一致
+        p.autoCollapse = o.optBoolean("autoCollapse", true);
         return p;
     }
 }

@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbBeep;
     private CheckBox cbAppend;
     private CheckBox cbIgnoreDup;
+    private CheckBox cbAutoCollapse;
     private Spinner spCamera;
     private Spinner spChannel;
     private Spinner spModal;
@@ -123,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         cbBeep = findViewById(R.id.cbBeep);
         cbAppend = findViewById(R.id.cbAppend);
         cbIgnoreDup = findViewById(R.id.cbIgnoreDup);
+        cbAutoCollapse = findViewById(R.id.cbAutoCollapse);
         spCamera = findViewById(R.id.spCamera);
         spChannel = findViewById(R.id.spChannel);
         spModal = findViewById(R.id.spModal);
@@ -221,6 +223,8 @@ public class MainActivity extends AppCompatActivity {
                 Prefs.setAppendMode(this, isChecked));
         cbIgnoreDup.setOnCheckedChangeListener((buttonView, isChecked) ->
                 Prefs.setIgnoreDup(this, isChecked));
+        cbAutoCollapse.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Prefs.setAutoCollapse(this, isChecked));
         // 提示音是全局设置，不跟配置档走
         cbBeep.setChecked(Prefs.soundEnabled(this));
         cbBeep.setOnCheckedChangeListener((buttonView, isChecked) ->
@@ -306,6 +310,7 @@ public class MainActivity extends AppCompatActivity {
         cbEnter.setChecked(p.enter);
         cbAppend.setChecked(p.appendMode);
         cbIgnoreDup.setChecked(p.ignoreDup);
+        cbAutoCollapse.setChecked(p.autoCollapse);
 
         suppressChannelCallback = true;
         spChannel.setSelection(channelIndex(p.channel));

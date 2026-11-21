@@ -110,6 +110,17 @@ public final class Prefs {
         Profiles.save(ctx, p);
     }
 
+    /** 识别成功注入后是否自动折叠面板；归属配置档，默认开。 */
+    public static boolean autoCollapse(Context ctx) {
+        return Profiles.current(ctx).autoCollapse;
+    }
+
+    public static void setAutoCollapse(Context ctx, boolean enabled) {
+        Profile p = Profiles.current(ctx).copy();
+        p.autoCollapse = enabled;
+        Profiles.save(ctx, p);
+    }
+
     /** 选定的摄像头 cameraId；空串 = 系统默认后置。 */
     public static String cameraId(Context ctx) {
         return sp(ctx).getString(KEY_CAMERA_ID, Cameras.DEFAULT);

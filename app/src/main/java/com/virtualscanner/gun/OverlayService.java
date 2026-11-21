@@ -78,6 +78,8 @@ public class OverlayService extends Service implements LifecycleOwner {
     private static final long BATCH_GAP_MS = 150L;
     /** 照片识别前把最长边压到这个尺寸，与图库识别保持一致。 */
     private static final int PHOTO_MAX_EDGE = 2000;
+    /** 自动折叠前留出的时间：让状态行上的成功结果（以及提示音）先被看见 / 听见。 */
+    private static final long AUTO_COLLAPSE_DELAY_MS = 500L;
 
     /** 服务是否在运行。主界面用它显示"启动/停止"，避免按钮状态与实际不一致。 */
     private static volatile boolean running = false;
@@ -348,8 +350,9 @@ public class OverlayService extends Service implements LifecycleOwner {
         // 自检：悬浮窗保持 FLAG_NOT_FOCUSABLE，焦点仍在目标 App 上，
         // 所以这里的注入路径与真实扫码完全一致，可用于现场排障。
         // 发什么内容由主界面「自检内容」决定（默认 TEST123），前后缀照常套用。
+        // 自检是一次诊断操作，不是识别结果：即使开着自动折叠，也不能把面板收走
         panelView.findViewById(R.id.btnTest)
-                .setOnClickListener(v -> handleCode(Prefs.testText(this)));
+                .setOnClickListener(v -> handleCode(Prefs.testText(this), false));
 
         // 退出：彻底结束服务，连悬浮球和常驻通知一起清掉
         panelView.findViewById(R.id.btnExit).setOnClickListener(v -> confirmExit());
@@ -710,11 +713,15 @@ public class OverlayService extends Service implements LifecycleOwner {
         // 单帧结果不可信：交给 ScanGuard 做多帧投票 + 视野锁定
         String confirmed = guard.onFrame(value, SystemClock.elapsedRealtime());
         if (confirmed != null) {
-            handleCode(confirmed);
+            handleCode(confirmed, true);
         }
     }
 
-    private void handleCode(String code) {
+    /**
+     * @param fromRecognition 是否来自镜头 / 图片的识别结果。面板「自检」是手动诊断，传 false，
+     *                        否则一次自检就把面板折起来，没法连续排障。
+     */
+    private void handleCode(String code, boolean fromRecognition) {
         final Profile profile = Profiles.current(this);
         final Payload payload = Payload.of(profile, code);
         setStatus(getString(R.string.status_detected, brief(code)));
@@ -734,6 +741,16 @@ public class OverlayService extends Service implements LifecycleOwner {
                 // 只有真正送出去了才响：失败时静音，免得把"没扫到"误听成"扫到了"
                 if (result.ok && Prefs.soundEnabled(this)) {
                     Beep.success();
+                }
+                // 识别结果成功送出后才折叠：失败时留着面板，状态行上的原因才看得见。
+                // 记下当前面板实例——等待期间用户若手动收起又重新展开，别把新面板也收走。
+                final View panel = panelView;
+                if (fromRecognition && result.ok && profile.autoCollapse && panel != null) {
+                    main.postDelayed(() -> {
+                        if (panelView == panel) {
+                            collapse();
+                        }
+                    }, AUTO_COLLAPSE_DELAY_MS);
                 }
             });
         });
@@ -852,8 +869,10 @@ public class OverlayService extends Service implements LifecycleOwner {
             return;
         }
         if (values.size() == 1) {
-            handleCode(values.get(0));
+            // 图库单码识别也算识别结果：自动折叠开着时走同一套收起逻辑
+            handleCode(values.get(0), true);
         } else {
+            // 整页 / 图库批量要逐条看进度，不能中途把面板收走
             injectBatch(values);
         }
     }

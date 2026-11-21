@@ -122,6 +122,8 @@
     <string name="cb_append">追加到游標處（否則覆蓋原內容）</string>
     <string name="cb_ignore_dup">忽略連續重複的條碼</string>
     <string name="cb_beep">掃到後播放提示音</string>
+    <string name="cb_auto_collapse">辨識條碼或二維碼成功後，自動收合掃描視窗</string>
+    <string name="hint_auto_collapse">預設開啟；傳送失敗時保持面板展開，方便查看原因。整頁掃描與圖片辨識的批次錄入不受此項影響。</string>
     <string name="escape_hint">支援轉義：\\n 換行 · \\t 定位字元 · \\xNN 十六進位位元組</string>
     <string name="payload_preview">最終傳送：%1$s</string>
 
@@ -305,7 +307,7 @@
     <string name="help_s2_title">② 啟動懸浮窗，把游標停好</string>
     <string name="help_s2_body">點「啟動懸浮窗」，螢幕邊緣出現懸浮球，通知列出現常駐通知（相機在跑，系統要求必須顯示）。\n\n然後切到要輸入的 App —— 收銀介面、記事本、Excel 都行 —— 用手指把游標點進要填的那個輸入框。\n\n這一步最容易被忽略：內容永遠是打到「目前焦點」的位置，游標不在輸入框裡，按鍵就沒地方落。</string>
     <string name="help_s3_title">③ 展開面板，對準條碼</string>
-    <string name="help_s3_body">點一下懸浮球，面板展開，把條碼放進取景框。狀態列會依序變成「對準條碼」→「辨識到: …」→「成功 · 無障礙 (32 ms)」。\n\n聽到提示音、看到「成功」就可以移開，接著掃下一件。\n\n懸浮球手勢：單擊展開 · 拖曳移動位置 · 長按 600 ms 退出。</string>
+    <string name="help_s3_body">點一下懸浮球，面板展開，把條碼放進取景框。狀態列會依序變成「對準條碼」→「辨識到: …」→「成功 · 無障礙 (32 ms)」。\n\n聽到提示音、看到「成功」就可以移開，接著掃下一件。\n\n預設辨識並傳送成功後，面板會自動收合回懸浮球，不用再點「收合」。要連續掃、不想每次重新展開，到主畫面關掉「辨識條碼或二維碼成功後，自動收合掃描視窗」即可。\n\n懸浮球手勢：單擊展開 · 拖曳移動位置 · 長按 600 ms 退出。</string>
     <string name="help_s4_title">面板上的按鈕</string>
     <string name="help_s4_body">• 圖片辨識 —— 從相簿選一張圖，辨識裡面的碼；不需要儲存權限，截圖、聊天裡收到的碼都能用\n• 整頁掃描 —— 拍一張照片，把整頁的條碼一次錄完（見下一節）\n• 自檢 —— 發送主介面「自檢內容」裡那段文字，走完整鏈路，排錯第一招\n• 指令 —— 常用指令清單，選中即發\n• 鏡頭 —— 在多顆相機之間循環切換\n• 退出 —— 二次確認後停止服務\n\n面板頂端標題列可以按住拖曳，點「收起」回到懸浮球。</string>
     <string name="help_s5_title">為什麼掃一次只進一次</string>

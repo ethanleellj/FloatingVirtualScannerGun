@@ -122,6 +122,8 @@
     <string name="cb_append">Append at the cursor (otherwise overwrite)</string>
     <string name="cb_ignore_dup">Ignore consecutive duplicate barcodes</string>
     <string name="cb_beep">Beep when a scan is sent</string>
+    <string name="cb_auto_collapse">Fold the scan window back after a barcode or QR code is recognized</string>
+    <string name="hint_auto_collapse">On by default. The panel stays open if sending fails so you can see why. Whole-page and gallery batches are unaffected.</string>
     <string name="escape_hint">Escapes: \\n newline · \\t Tab · \\xNN hex byte</string>
     <string name="payload_preview">Sends: %1$s</string>
 
@@ -305,7 +307,7 @@
     <string name="help_s2_title">② Start the overlay, put the cursor in place</string>
     <string name="help_s2_body">Tap \"Start overlay\": a floating ball appears at the screen edge and a persistent notification shows up (the camera is running, Android requires it).\n\nSwitch to the app you want to type into — POS screen, notes, Excel — and tap the field to fill.\n\nThis is the step people skip: text always goes to whatever has focus. No cursor in a field, nowhere for the keys to land.</string>
     <string name="help_s3_title">③ Open the panel, aim at the barcode</string>
-    <string name="help_s3_body">Tap the floating ball to expand the panel and put the barcode inside the preview. The status line walks through \"Aim at a barcode\" → \"Detected: …\" → \"OK · accessibility (32 ms)\".\n\nOnce you hear the beep and see OK, move on to the next item.\n\nBall gestures: tap to expand · drag to move · long-press 600 ms to exit.</string>
+    <string name="help_s3_body">Tap the floating ball to expand the panel and put the barcode inside the preview. The status line walks through \"Aim at a barcode\" → \"Detected: …\" → \"OK · accessibility (32 ms)\".\n\nOnce you hear the beep and see OK, move on to the next item. By default the panel folds back to the ball after a successful send — no need to tap Hide. To keep it open for continuous scanning, turn off \"Fold the scan window back after a barcode or QR code is recognized\" on the main screen.\n\nBall gestures: tap to expand · drag to move · long-press 600 ms to exit.</string>
     <string name="help_s4_title">Buttons on the panel</string>
     <string name="help_s4_body">• Image — pick a photo and decode the codes in it; no storage permission, works with screenshots and codes received in chat\n• Scan page — photograph a whole sheet and type every code on it (next section)\n• Test — sends the text from the main screen\'s self-test field through the full chain; first thing to try when debugging\n• Snippets — your saved snippets, tap to send\n• Lens — cycles through the available cameras\n• Exit — stops the service after a confirmation\n\nThe title bar can be dragged; tap Collapse to return to the ball.</string>
     <string name="help_s5_title">Why one scan types once</string>

@@ -122,6 +122,8 @@
     <string name="cb_append">追加到光标处（否则覆盖原内容）</string>
     <string name="cb_ignore_dup">忽略连续重复的条码</string>
     <string name="cb_beep">扫到后播放提示音</string>
+    <string name="cb_auto_collapse">识别条码或二维码成功后，自动折叠扫描窗口</string>
+    <string name="hint_auto_collapse">默认开启；发送失败时保持面板展开，方便查看原因。整页扫描与图片识别的批量录入不受此项影响。</string>
     <string name="escape_hint">支持转义：\\n 换行 · \\t 制表符 · \\xNN 十六进制字节</string>
     <string name="payload_preview">最终发送：%1$s</string>
 
@@ -305,7 +307,7 @@
     <string name="help_s2_title">② 启动悬浮窗，把光标停好</string>
     <string name="help_s2_body">点「启动悬浮窗」，屏幕边缘出现悬浮球，通知栏出现常驻通知（相机在跑，系统要求必须显示）。\n\n然后切到要录入的 App —— 收银界面、记事本、Excel 都行 —— 用手指把光标点进要填的那个输入框。\n\n这一步最容易被忽略：内容永远是打到「当前焦点」的位置，光标不在输入框里，键就没地方落。</string>
     <string name="help_s3_title">③ 展开面板，对准条码</string>
-    <string name="help_s3_body">点一下悬浮球，面板展开，把条码放进取景框。状态行会依次变成「对准条码」→「识别到: …」→「成功 · 无障碍 (32 ms)」。\n\n听到提示音、看到「成功」就可以移开，接着扫下一件。\n\n悬浮球手势：单击展开 · 拖动移动位置 · 长按 600 ms 退出。</string>
+    <string name="help_s3_body">点一下悬浮球，面板展开，把条码放进取景框。状态行会依次变成「对准条码」→「识别到: …」→「成功 · 无障碍 (32 ms)」。\n\n听到提示音、看到「成功」就可以移开，接着扫下一件。\n\n默认识别并发送成功后，面板会自动折回悬浮球，不用再点「收起」。要连续扫、不想每次重新展开，到主界面关掉「识别条码或二维码成功后，自动折叠扫描窗口」即可。\n\n悬浮球手势：单击展开 · 拖动移动位置 · 长按 600 ms 退出。</string>
     <string name="help_s4_title">面板上的按钮</string>
     <string name="help_s4_body">• 图片识别 —— 从相册选一张图，识别里面的码；不需要存储权限，截图、聊天里收到的码都能用\n• 整页扫描 —— 拍一张照片，把整页的条码一次录完（见下一节）\n• 自检 —— 发送主界面「自检内容」里那段文本，走完整链路，排障第一招\n• 指令 —— 常用指令列表，选中即发\n• 镜头 —— 在多颗摄像头之间循环切换\n• 退出 —— 二次确认后停止服务\n\n面板顶部标题栏可以按住拖动，点「收起」回到悬浮球。</string>
     <string name="help_s5_title">为什么扫一次只进一次</string>

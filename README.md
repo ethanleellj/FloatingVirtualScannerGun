@@ -109,7 +109,7 @@
 
 ## 功能现状
 
-当前版本 `0.1-demo`：五条注入通道（无障碍 / Shizuku / 剪贴板 / 网络转发 / 蓝牙键盘）、配置档、常用指令、扫码历史、多码策略、整页扫描与提示音。
+当前版本 `0.1-demo`：五条注入通道（无障碍 / Shizuku / 剪贴板 / 网络转发 / 蓝牙键盘）、配置档、常用指令、扫码历史、多码策略、整页扫描、提示音，以及识别成功后自动折叠扫描窗口。
 
 | 能力 | 状态 | 说明 |
 |---|---|---|
@@ -135,6 +135,7 @@
 | 忽略重复条码 | ✅ 已实现 | 默认开：连续扫同一个码只进一次；关掉后同码离开画面即可再次录入 |
 | **成对前缀后缀** | ✅ 已实现 | 支持 `\n` `\r` `\t` `\xNN` 转义，控制符自动拆成按键 |
 | **扫码提示音** | ✅ 真机确认 | 成功才响，失败静音；可关闭 |
+| **识别后自动折叠** | ✅ 已实现 | 条码 / 二维码识别并成功注入后 500 ms 折回悬浮球；默认开，跟随配置档。发送失败保持展开，整页 / 图库批量与面板「自检」不触发 |
 | **配置档** | ✅ 已实现 | 新建 / 重命名 / 复制 / 删除 / 切换，旧配置自动迁移 |
 | **配置导入 / 导出** | ✅ 真机验证 | 一键导出 JSON（配置档 + 常用指令），拷到别的手机导入即可批量分发；同 id 覆盖、异 id 追加、可反复导入 |
 | **常用指令** | ✅ 已实现 | 命名文本，悬浮面板一键发送 |
@@ -215,7 +216,7 @@
 | 被弹窗挡住时 | 拦截并提示 / 先关掉弹窗再发 / 等待弹窗消失 | 默认拦截 |
 | 画面里有多个条码 | 9 档采信策略 | 默认「只取第一个」；最后一档「全部扫描（拍照整页）」是**模式**，选中后实时画面不再录入，改用面板上的「整页扫描」 |
 | 识别的码制 | 全部 / 只认一维条码 / 只认二维码（含 QR） | 默认「全部」；改完对实时扫码和图库识别立即生效 |
-| 扫码设置 | 前缀 / 后缀 / ☑ 自动回车 / ☑ 扫到后播放提示音 | 前缀后缀支持转义 |
+| 扫码设置 | 前缀 / 后缀 / ☑ 自动回车 / ☑ 追加 / ☑ 忽略重复 / ☑ 提示音 / ☑ 识别成功后自动折叠扫描窗口 | 前缀后缀支持转义；折叠开关默认开，跟随配置档 |
 | 资料库 | [常用指令] [扫码历史] | 指令的一键发送在悬浮面板上 |
 | 手动发送 | 输入框 + [发送] [发送并回车] | 排障用，走完整链路但不套前后缀 |
 | 摄像头 | 镜头下拉 | 列出所有可用摄像头，切换即时重绑 |
@@ -380,6 +381,7 @@ python tools/pc_receiver/receiver.py --port 9100 --clipboard --type
 | 自动回车 | **开** | 一条一行，扫完自动换行 |
 | 追加 / 覆盖 | **追加**（默认） | 连续扫多条，新的一条接在后面而不是冲掉上一条 |
 | 忽略重复条码 | **开**（默认） | 同一台设备误扫两次时挡住第二次 |
+| 自动折叠扫描窗口 | **关**（连续录入时建议） | 面板保持展开，扫完不必再点一次悬浮球；默认值是开，需在主界面手动关掉 |
 | 多码同框策略 | 只取第一个（默认） | 一张标签只有一个码时无需改动 |
 | 提示音 | 开 | 眼睛不用一直盯着屏幕，听到"嘀"就换下一件 |
 
@@ -474,6 +476,7 @@ python tools/pc_receiver/receiver.py --port 9100 --clipboard --type
 | 换码解锁 | 内置 | 1200 ms | 画面始终有可解码内容（两件商品挨着扫、中间没有空帧）时，锁定后仍解出**不同内容**且距上次注入超过 1.2 s，认定为下一件商品并重新走三帧确认 |
 | 多码同框策略 | 全局 | 只取第一个 | 一帧里出现多个条码时采信哪一个：只取第一个 / 第二个 / 第三个 / 第四个 / 最后一个（按识别器返回顺序；前四种在画面里不足 N 个码时本帧不采信，末位策略总能取到值）、面积最大（最近）、最靠画面中心、多码时不扫 |
 | 扫码提示音 | 全局 | **开** | 成功注入后播一声短促的「嘀」，失败时不响，避免把失败误听成成功 |
+| 识别后自动折叠 | 配置档 | **开** | 条码 / 二维码识别并成功注入后 500 ms 折回悬浮球；发送失败时保持展开。整页扫描 / 图库批量与面板「自检」不折叠 |
 | 识别的码制 | 全局 | 全部 | 只认一维条码 / 只认二维码（QR、Data Matrix、Aztec、PDF417）/ 全部。过滤在结果层做，不会因切换而重建识别器 |
 | 摄像头 | 全局 | 系统后置 | 保存 Camera2 的 camera id，如 `0` / `1` |
 | 语言 | 全局 | 跟随系统 | 跟随系统 / 简体中文 / 繁體中文 / English |
@@ -495,7 +498,7 @@ python tools/pc_receiver/receiver.py --port 9100 --clipboard --type
 
 ## 多语言
 
-支持 **简体中文 / 繁体中文 / 英语**，三套资源各 271 条，键集合完全一致。
+支持 **简体中文 / 繁体中文 / 英语**，三套资源各 279 条，键集合完全一致。
 
 | 语言 | 资源目录 | App 名称 |
 |---|---|---|
@@ -769,6 +772,12 @@ PDA-6901236347102-ENDPDA
 
 修法是锁定期间也看结果：解出**不同内容**、且距上次注入 ≥ 1.2 s，判定为下一件（事件 `UNLOCK_SWAP`），清零离开时长后重新走三帧确认；同码复扫仍被去重挡住。这个缺陷是离线回放（`tools/sim/GuardSim.java`）先跑出来的——真机上两次换码测试恰好都有空档，反而没暴露。
 
+**16. 自动折叠放在注入成功之后，不是识别那一瞬间**
+
+「识别成功」只说明 `ScanGuard` 放行了这一帧，此时还不知道通道能不能送进去。若在那一刻就收起面板，注入失败的原因会连同面板一起消失，操作员只听见静音、看不到任何提示。所以折叠排在注入结果回来之后，且只在成功时发生；再留 500 ms 让状态行上的「成功 · 通道 (耗时)」和提示音先被感知到。
+
+另外三类操作刻意不折叠：发送失败（要留着面板看原因）、面板「自检」（一次诊断操作，收起来就没法连续排障）、整页扫描 / 图库批量（要逐条看进度）。等待的 500 ms 里如果用户手动收起又重新展开，比较面板实例后发现不是原来那个，就不动新面板。
+
 ## 专项验证（2026-11-06）
 
 码制、低光、横屏、分屏这几项的验证方法与结论：
@@ -869,7 +878,7 @@ Two main uses: (1) legacy line-of-business apps (POS, WMS, ERP) that only accept
 - **Multiple barcodes in one frame**: 9 selectable policies (1st / 2nd / 3rd / 4th / last in decoder order, largest, nearest to center, skip the frame, whole page). Default is "first detected". "Whole page" is a mode: live frames stop typing and the panel's **Scan page** button photographs the sheet, then every code on it is typed in reading order (top to bottom, left to right, duplicates dropped, 100 codes max).
 - **Configurable test payload**: the "Injection self-test" button on the main screen and the panel's **Test** button both send the text set in the main screen's self-test field (default `TEST123`); prefix/suffix and Enter still apply to the panel path.
 - **Dialog guard**: before injecting, the window stack is checked for a modal dialog with a dismiss button. Blocked sends are reported instead of being silently swallowed.
-- **Scanner-style config**: profiles bundle prefix/suffix (with `\n` `\r` `\t` `\xNN` escapes), auto-Enter, channel and dialog policy; 1500 ms duplicate filter; per-lens camera selection; optional success beep.
+- **Scanner-style config**: profiles bundle prefix/suffix (with `\n` `\r` `\t` `\xNN` escapes), auto-Enter, channel and dialog policy, and a toggle to fold the scan window back after a successful scan (on by default; failures keep the panel open); 1500 ms duplicate filter; per-lens camera selection; optional success beep.
 - **Library**: named snippets sendable in one tap from the floating panel, plus a local 500-entry scan history with search and copy.
 - **In-app help**: the **Help** button at the top right of the main screen opens a three-step quick start, a reference for every panel button, batch-capture recipes, an ordered troubleshooting checklist, plus the permission notes, privacy policy and open-source list — in all three languages, no network needed. The full project README is also bundled in the app: **About → Project README**.
 - **Privacy**: no analytics, no cloud, no account. History lives in a local SQLite file. The app makes a network request **only** when you pick the network-forwarding channel and press scan — it then connects to the PC address you typed and sends that one line of text. Nothing is sent anywhere else, ever.
