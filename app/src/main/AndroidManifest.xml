@@ -11,6 +11,9 @@
     <!-- V2「网络转发」：把条码发到你自己填的那台 PC。不申请任何定位/读取电话状态类权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- 自动更新：把下载好的 APK 交给系统安装器 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
     <!-- V2「蓝牙键盘输出」：手机当 PC 的蓝牙键盘（HID Device 角色）。
          Android 12 起必须走运行时权限，只在启用该输出时才申请；
          老系统用 BLUETOOTH / BLUETOOTH_ADMIN，用 maxSdkVersion 限住，免得白白多要权限 -->
@@ -113,6 +116,17 @@
                 android:name="autoStoreLocales"
                 android:value="true" />
         </service>
+
+        <!-- 自动更新下载的 APK 在私有 cache 里，靠 FileProvider 临时授权给系统安装器 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <!-- Shizuku 授权通道，必须声明，authorities 固定为 ${applicationId}.shizuku -->
         <provider

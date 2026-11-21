@@ -34,6 +34,11 @@ public final class Prefs {
 
     /** 「自检 / Test」按钮发送的内容：现场排障时经常要换成对方系统能接受的样例 */
     public static final String KEY_TEST_TEXT = "test_text";
+    /** 自动更新：开 / 上次检查时间 / 已下载待安装的 APK 与版本 */
+    public static final String KEY_AUTO_UPDATE = "auto_update";
+    public static final String KEY_LAST_UPDATE_CHECK = "last_update_check_ms";
+    public static final String KEY_PENDING_APK = "pending_update_apk";
+    public static final String KEY_PENDING_VERSION = "pending_update_version";
     /** 测试按钮的出厂内容；改这里等于改默认值，不要动旧键名 */
     public static final String DEFAULT_TEST_TEXT = "TEST123";
 
@@ -199,5 +204,43 @@ public final class Prefs {
     public static void setTestText(Context ctx, String text) {
         sp(ctx).edit().putString(KEY_TEST_TEXT,
                 text == null ? "" : text).apply();
+    }
+
+    public static boolean autoUpdate(Context ctx) {
+        return sp(ctx).getBoolean(KEY_AUTO_UPDATE, true);
+    }
+
+    public static void setAutoUpdate(Context ctx, boolean enabled) {
+        sp(ctx).edit().putBoolean(KEY_AUTO_UPDATE, enabled).apply();
+    }
+
+    public static long lastUpdateCheckMs(Context ctx) {
+        return sp(ctx).getLong(KEY_LAST_UPDATE_CHECK, 0L);
+    }
+
+    public static void setLastUpdateCheckMs(Context ctx, long ms) {
+        sp(ctx).edit().putLong(KEY_LAST_UPDATE_CHECK, ms).apply();
+    }
+
+    /** 下载完但还没安装成功的 APK：授权「未知来源」回来后接着装。 */
+    public static String pendingApk(Context ctx) {
+        String s = sp(ctx).getString(KEY_PENDING_APK, "");
+        return s == null ? "" : s;
+    }
+
+    public static String pendingVersion(Context ctx) {
+        String s = sp(ctx).getString(KEY_PENDING_VERSION, "");
+        return s == null ? "" : s;
+    }
+
+    public static void setPendingUpdate(Context ctx, String path, String version) {
+        sp(ctx).edit()
+                .putString(KEY_PENDING_APK, path == null ? "" : path)
+                .putString(KEY_PENDING_VERSION, version == null ? "" : version)
+                .apply();
+    }
+
+    public static void clearPendingUpdate(Context ctx) {
+        setPendingUpdate(ctx, "", "");
     }
 }

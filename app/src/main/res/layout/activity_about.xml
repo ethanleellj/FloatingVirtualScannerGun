@@ -89,6 +89,28 @@
             android:layout_marginTop="16dp"
             android:background="#E5E5E5" />
 
+        <!-- 更新：手动检查 GitHub Releases；启动时是否自动检查在主界面控制 -->
+        <Button
+            android:id="@+id/btnCheckUpdate"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minWidth="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:text="@string/about_check_update"
+            android:textAllCaps="false"
+            android:textColor="#1E6FFF"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_check_update_hint"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
         <!-- 项目说明：README 全文单独一页，从这里进 -->
         <Button
             android:id="@+id/btnReadme"

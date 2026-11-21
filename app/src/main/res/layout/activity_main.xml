@@ -643,5 +643,13 @@
             android:layout_marginTop="4dp"
             android:text="@string/section_language" />
 
+        <CheckBox
+            android:id="@+id/cbAutoUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/cb_auto_update"
+            android:textSize="16sp" />
+
     </LinearLayout>
 </ScrollView>

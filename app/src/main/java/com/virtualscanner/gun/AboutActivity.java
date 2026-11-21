@@ -53,6 +53,8 @@ public class AboutActivity extends AppCompatActivity {
         TextView tvEmail = findViewById(R.id.tvEmail);
         tvEmail.setOnClickListener(v -> mail());
 
+        findViewById(R.id.btnCheckUpdate).setOnClickListener(
+                v -> UpdateChecker.check(this, false));
         findViewById(R.id.btnReadme).setOnClickListener(
                 v -> startActivity(new Intent(this, ReadmeActivity.class)));
     }

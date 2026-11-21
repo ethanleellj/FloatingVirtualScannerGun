@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbAppend;
     private CheckBox cbIgnoreDup;
     private CheckBox cbAutoCollapse;
+    private CheckBox cbAutoUpdate;
     private Spinner spCamera;
     private Spinner spChannel;
     private Spinner spModal;
@@ -125,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         cbAppend = findViewById(R.id.cbAppend);
         cbIgnoreDup = findViewById(R.id.cbIgnoreDup);
         cbAutoCollapse = findViewById(R.id.cbAutoCollapse);
+        cbAutoUpdate = findViewById(R.id.cbAutoUpdate);
         spCamera = findViewById(R.id.spCamera);
         spChannel = findViewById(R.id.spChannel);
         spModal = findViewById(R.id.spModal);
@@ -229,6 +231,9 @@ public class MainActivity extends AppCompatActivity {
         cbBeep.setChecked(Prefs.soundEnabled(this));
         cbBeep.setOnCheckedChangeListener((buttonView, isChecked) ->
                 Prefs.setSoundEnabled(this, isChecked));
+        cbAutoUpdate.setChecked(Prefs.autoUpdate(this));
+        cbAutoUpdate.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Prefs.setAutoUpdate(this, isChecked));
 
         Shizuku.addBinderReceivedListenerSticky(binderReceivedListener);
         Shizuku.addBinderDeadListener(binderDeadListener);
@@ -243,6 +248,8 @@ public class MainActivity extends AppCompatActivity {
         loadProfileIntoUi();
         refreshStatus();
         reloadCameras();
+        // 每天首次进入时静默检查一次；关掉开关或检查失败都不打扰扫码
+        UpdateChecker.maybeAutoCheck(this);
     }
 
     @Override
