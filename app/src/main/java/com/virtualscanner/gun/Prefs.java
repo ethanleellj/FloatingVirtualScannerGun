@@ -39,6 +39,12 @@ public final class Prefs {
     public static final String KEY_LAST_UPDATE_CHECK = "last_update_check_ms";
     public static final String KEY_PENDING_APK = "pending_update_apk";
     public static final String KEY_PENDING_VERSION = "pending_update_version";
+    /** 悬浮球/面板共用的位置（屏幕坐标 px）；不存 dp，WindowManager 的 x/y 本身就是 px */
+    public static final String KEY_FLOAT_X = "float_x";
+    public static final String KEY_FLOAT_Y = "float_y";
+    /** 首次启动时的出厂位置，与原来的写死值一致 */
+    public static final int DEFAULT_FLOAT_X = 24;
+    public static final int DEFAULT_FLOAT_Y = 360;
     /** 测试按钮的出厂内容；改这里等于改默认值，不要动旧键名 */
     public static final String DEFAULT_TEST_TEXT = "TEST123";
 
@@ -242,5 +248,18 @@ public final class Prefs {
 
     public static void clearPendingUpdate(Context ctx) {
         setPendingUpdate(ctx, "", "");
+    }
+
+    /** 上次退出时悬浮球/面板的位置；未设置过则回到出厂位置。 */
+    public static int floatX(Context ctx) {
+        return sp(ctx).getInt(KEY_FLOAT_X, DEFAULT_FLOAT_X);
+    }
+
+    public static int floatY(Context ctx) {
+        return sp(ctx).getInt(KEY_FLOAT_Y, DEFAULT_FLOAT_Y);
+    }
+
+    public static void setFloatPosition(Context ctx, int x, int y) {
+        sp(ctx).edit().putInt(KEY_FLOAT_X, x).putInt(KEY_FLOAT_Y, y).apply();
     }
 }

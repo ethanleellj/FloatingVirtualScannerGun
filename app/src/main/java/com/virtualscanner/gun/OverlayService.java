@@ -13,6 +13,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
@@ -287,8 +288,10 @@ public class OverlayService extends Service implements LifecycleOwner {
         // 会把气泡量成"文字大小"。这里必须显式给出窗口尺寸。
         bubbleParams.width = dp(56);
         bubbleParams.height = dp(56);
-        bubbleParams.x = 24;
-        bubbleParams.y = 360;
+        // 沿用上次退出时的位置；越界时夹回屏幕内并写回，避免下次启动仍然越界
+        bubbleParams.x = Position.clamp(Prefs.floatX(this), screenWidthPx(), bubbleParams.width);
+        bubbleParams.y = Position.clamp(Prefs.floatY(this), screenHeightPx(), bubbleParams.height);
+        saveCurrentPosition();
 
         bubbleView.setOnTouchListener(new DragTouchListener(bubbleView, bubbleParams) {
             @Override
@@ -300,6 +303,11 @@ public class OverlayService extends Service implements LifecycleOwner {
             void onLongClick() {
                 // 收起状态下唯一能触达的操作入口：长按悬浮球 = 退出
                 confirmExit();
+            }
+
+            @Override
+            void onPositionChanged(int x, int y) {
+                saveCurrentPosition();
             }
         });
 
@@ -335,13 +343,19 @@ public class OverlayService extends Service implements LifecycleOwner {
         previewView.setImplementationMode(PreviewView.ImplementationMode.COMPATIBLE);
 
         panelParams = baseParams();
-        panelParams.x = 24;
-        panelParams.y = 360;
+        // 面板比悬浮球大，具体边界在 fitPreviewToScreen() 里按实测尺寸收敛
+        panelParams.x = Prefs.floatX(this);
+        panelParams.y = Prefs.floatY(this);
 
         View dragBar = panelView.findViewById(R.id.dragBar);
         dragBar.setOnTouchListener(new DragTouchListener(panelView, panelParams) {
             @Override
             void onClick() {
+            }
+
+            @Override
+            void onPositionChanged(int x, int y) {
+                saveCurrentPosition();
             }
         });
 
@@ -411,33 +425,59 @@ public class OverlayService extends Service implements LifecycleOwner {
         lp.height = Math.max(floor, Math.min(desired, available));
         previewView.setLayoutParams(lp);
 
-        // 只压预览高度还不够：面板默认落在 y=360dp，横屏时"360 + 面板高度"照样超出屏幕。
-        // 把 y 一起收进来，保证下沿不出屏。
+        // 只压预览高度还不够：面板沿用上次保存的位置，横屏 / 分屏 / 换机后可能整个跑到屏幕外。
+        // 按实测尺寸把 x / y 都收进来，四边都要看得见、摸得着。
         if (panelParams != null) {
             int total = overhead + lp.height;
-            int maxY = Math.max(0, screenHeightPx() - total - dp(16));
-            int newY = Math.min(panelParams.y, maxY);
-            boolean moved = newY != panelParams.y;
+            int usableH = Math.max(0, screenHeightPx() - dp(16));
+            int newX = Position.clamp(panelParams.x, screenWidthPx(), panelView.getMeasuredWidth());
+            int newY = Position.clamp(panelParams.y, usableH, total);
+            boolean moved = newX != panelParams.x || newY != panelParams.y;
+            panelParams.x = newX;
             panelParams.y = newY;
-            if (moved && panelView.isAttachedToWindow()) {
-                try {
-                    wm.updateViewLayout(panelView, panelParams);
-                } catch (Throwable ignored) {
-                    // 窗口刚被移除时会抛，忽略即可
+            if (moved) {
+                // 越界修正后的位置也要记住，否则下次展开还要重新夹一遍
+                saveCurrentPosition();
+                if (panelView.isAttachedToWindow()) {
+                    try {
+                        wm.updateViewLayout(panelView, panelParams);
+                    } catch (Throwable ignored) {
+                        // 窗口刚被移除时会抛，忽略即可
+                    }
                 }
             }
         }
         Log.i("VSG-Panel", "fitPreview: overhead=" + overhead + " available=" + available
-                + " preview=" + lp.height + " y=" + (panelParams == null ? -1 : panelParams.y));
+                + " preview=" + lp.height
+                + " x=" + (panelParams == null ? -1 : panelParams.x)
+                + " y=" + (panelParams == null ? -1 : panelParams.y));
+    }
+
+    private int screenWidthPx() {
+        return windowBounds().width();
     }
 
     private int screenHeightPx() {
+        return windowBounds().height();
+    }
+
+    /** 当前窗口的可用区域；分屏时 getCurrentWindowMetrics 给的就是本窗口边界。 */
+    private Rect windowBounds() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            return wm.getCurrentWindowMetrics().getBounds().height();
+            return wm.getCurrentWindowMetrics().getBounds();
         }
         android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
         wm.getDefaultDisplay().getRealMetrics(metrics);
-        return metrics.heightPixels;
+        return new Rect(0, 0, metrics.widthPixels, metrics.heightPixels);
+    }
+
+    /** 保存当前可见窗口的位置。悬浮球与面板共用一份，收起 / 展开时不会跳回出厂点。 */
+    private void saveCurrentPosition() {
+        if (panelView != null && panelParams != null) {
+            Prefs.setFloatPosition(this, panelParams.x, panelParams.y);
+        } else if (bubbleParams != null) {
+            Prefs.setFloatPosition(this, bubbleParams.x, bubbleParams.y);
+        }
     }
 
     @Override
@@ -489,6 +529,8 @@ public class OverlayService extends Service implements LifecycleOwner {
 
     /** 真正的退出：先撤掉所有窗口，再停前台通知并结束服务。 */
     private void exitNow() {
+        // 退出即落盘：下次启动从用户最后看到的位置开始
+        saveCurrentPosition();
         Toast.makeText(getApplicationContext(), R.string.toast_exited, Toast.LENGTH_SHORT).show();
         unbindCamera();
         hideBubble();
@@ -1152,6 +1194,9 @@ public class OverlayService extends Service implements LifecycleOwner {
 
         abstract void onClick();
 
+        /** 松手时把最终位置落盘（点按也会写一次，开销可忽略）。 */
+        abstract void onPositionChanged(int x, int y);
+
         /** 长按回调，默认不处理。 */
         void onLongClick() {
         }
@@ -1181,6 +1226,8 @@ public class OverlayService extends Service implements LifecycleOwner {
                     }
                     return true;
                 case MotionEvent.ACTION_UP:
+                    // 先落盘再处理点击：展开面板时读到的就是刚刚拖到的位置
+                    onPositionChanged(params.x, params.y);
                     if (!moved) {
                         if (SystemClock.uptimeMillis() - downAt >= LONG_PRESS_MS) {
                             onLongClick();
@@ -1200,6 +1247,8 @@ public class OverlayService extends Service implements LifecycleOwner {
     @Override
     public void onDestroy() {
         instance = null;
+        // 被系统回收时也保住最后一次拖动结果
+        saveCurrentPosition();
         publishRunning(false);
         unbindCamera();
         hideBubble();

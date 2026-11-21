@@ -46,7 +46,7 @@
 | 注入通道 | 無障礙 → Shizuku 按鍵 → 剪貼簿兜底，自動降級；另可切「網路轉發」或「藍牙鍵盤」給電腦用 |
 | 錄入方式 | 前綴 / 後綴（支援轉義）、自動 Enter、追加 / 覆蓋、重複碼過濾、彈窗攔截 |
 | 批次 | 整頁掃描（拍照一次錄完）、圖庫識別、9 檔多碼策略、常用指令、掃描紀錄（本機 500 條） |
-| 便利 | 成功提示音、識別後自動收合（可關）、設定檔匯入匯出、三語介面、應用程式內說明與專案說明 |
+| 便利 | 成功提示音、識別後自動收合（可關）、懸浮球 / 面板位置記憶、設定檔匯入匯出、三語介面、應用程式內說明與專案說明 |
 | 自動更新 | 每天檢查一次 GitHub Releases，提示後下載安裝；可在主介面關閉 |
 
 ## 主介面地圖
@@ -95,6 +95,7 @@
 - 中文輸入法下走 Shizuku 可能把標點變全形；有輸入框時優先走無障礙
 - 網路轉發失敗不重試；藍牙鍵盤只認可列印 ASCII，且未做端到端驗證
 - 手機重開機後需手動開啟一次 App 拉起懸浮層；整頁掃描單頁上限 100 條
+- 懸浮位置以螢幕像素儲存；旋轉、分割畫面或換裝置後若座標越界，會夾回可見範圍，可能要重新拖到習慣的位置；面板比懸浮球大，展開時也會依可見範圍收斂位置
 - 詳細清單與驗證紀錄見[需求規格說明書](docs/需求规格说明书.md)與 App 內「關於 → 專案說明」
 
 ## 開發者
@@ -106,12 +107,13 @@
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-`tools/sim/` 可離線回放掃碼時序與多碼策略，裝機前先跑一遍：
+`tools/sim/` 可離線回放掃碼時序、多碼策略與懸浮位置收斂，裝機前先跑一遍：
 
 ```bash
-javac -d tools/sim/out app/src/main/java/com/virtualscanner/gun/{ScanGuard,BarcodePick,Versions}.java \
-  tools/sim/{PickSim,GuardSim,UpdateSim}.java
-java -cp tools/sim/out PickSim && java -cp tools/sim/out GuardSim && java -cp tools/sim/out UpdateSim
+javac -d tools/sim/out app/src/main/java/com/virtualscanner/gun/{ScanGuard,BarcodePick,Versions,Position}.java \
+  tools/sim/{PickSim,GuardSim,UpdateSim,PositionSim}.java
+java -cp tools/sim/out PickSim && java -cp tools/sim/out GuardSim \
+  && java -cp tools/sim/out UpdateSim && java -cp tools/sim/out PositionSim
 ```
 
 ## 文件與授權

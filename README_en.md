@@ -46,7 +46,7 @@ To exit: **Exit** on the panel, or long-press the collapsed ball for 600 ms. The
 | Injection | Accessibility → Shizuku key events → clipboard fallback, auto-degrading; network forwarding and Bluetooth HID can target a PC instead |
 | Entry | Prefix / suffix (with escapes), auto-Enter, append / replace, duplicate filter, modal-dialog guard |
 | Bulk | Whole-page scan, image picker, 9 multi-code policies, named snippets, local 500-entry history |
-| Convenience | Success beep, fold panel after a successful scan (can be off), profile import/export, three UI languages, offline help and project README |
+| Convenience | Success beep, fold panel after a successful scan (can be off), floating ball / panel position memory, profile import/export, three UI languages, offline help and project README |
 | Updates | One GitHub Releases check per day, download and install only after confirmation; can be disabled |
 
 ## Main screen at a glance
@@ -95,6 +95,7 @@ Neither PC channel has been verified end-to-end on a real computer yet — test 
 - Under a Chinese IME, Shizuku key injection may convert punctuation to full-width forms; apps with an input field use accessibility first
 - Network forwarding does not retry; the Bluetooth keyboard accepts printable ASCII only and has not been end-to-end tested
 - After a phone restart, open the app once to bring back the overlay; a whole-page scan handles at most 100 codes
+- The saved position is in screen pixels; after rotation, split-screen or a device change, an off-screen coordinate is clamped back into view and may need re-dragging. The panel is larger than the ball, so its position is clamped when expanded
 - Full details and verification records: [requirements spec](docs/需求规格说明书.md) and **About → Project README** inside the app
 
 ## Developers
@@ -106,12 +107,13 @@ Android Studio, JDK 25 and Gradle 9.4.1 are required (minSdk 26 / targetSdk 36):
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-`tools/sim/` replays scanning timing and multi-code logic without a device:
+`tools/sim/` replays scanning timing, multi-code logic and floating-position clamping without a device:
 
 ```bash
-javac -d tools/sim/out app/src/main/java/com/virtualscanner/gun/{ScanGuard,BarcodePick,Versions}.java \
-  tools/sim/{PickSim,GuardSim,UpdateSim}.java
-java -cp tools/sim/out PickSim && java -cp tools/sim/out GuardSim && java -cp tools/sim/out UpdateSim
+javac -d tools/sim/out app/src/main/java/com/virtualscanner/gun/{ScanGuard,BarcodePick,Versions,Position}.java \
+  tools/sim/{PickSim,GuardSim,UpdateSim,PositionSim}.java
+java -cp tools/sim/out PickSim && java -cp tools/sim/out GuardSim \
+  && java -cp tools/sim/out UpdateSim && java -cp tools/sim/out PositionSim
 ```
 
 ## Docs and license
